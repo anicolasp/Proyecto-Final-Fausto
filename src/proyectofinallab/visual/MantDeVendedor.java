@@ -5,6 +5,8 @@
  */
 package proyectofinallab.visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -39,7 +41,7 @@ public class MantDeVendedor extends javax.swing.JFrame {
         porvent = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         valganado = new javax.swing.JTextField();
-        ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -57,7 +59,12 @@ public class MantDeVendedor extends javax.swing.JFrame {
 
         jLabel5.setText("Valor ganado:");
 
-        ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +103,7 @@ public class MantDeVendedor extends javax.swing.JFrame {
                                 .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(17, 17, 17)
-                            .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
                             .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -139,7 +146,7 @@ public class MantDeVendedor extends javax.swing.JFrame {
                     .addComponent(valganado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ejecutar)
+                    .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
                 .addGap(30, 30, 30))
@@ -174,6 +181,29 @@ public class MantDeVendedor extends javax.swing.JFrame {
         porvent.setText("");
         valganado.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
+
+    int cont =0;
+    public void validar() {
+        
+        
+        if (idvend.getText().equals("")){cont++;}
+        if (nombres.getText().equals("")){cont++; }
+        if (apellidos.getText().equals("")){cont++; }
+        if (porvent.getText().equals("")){cont++; }
+         
+
+    }
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        validar();
+        
+        if (cont !=0){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+        else {
+            
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,7 +242,7 @@ public class MantDeVendedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
-    private javax.swing.JButton ejecutar;
+    private javax.swing.JButton guardar;
     private javax.swing.JTextField idvend;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

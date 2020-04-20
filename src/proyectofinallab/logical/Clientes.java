@@ -30,7 +30,6 @@ public class Clientes {
         this.limitecreditocliente = limitecreditocliente;
     }
     
-    //probandogithub
     
  
     

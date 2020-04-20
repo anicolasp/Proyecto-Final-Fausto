@@ -5,6 +5,8 @@
  */
 package proyectofinallab.visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -34,7 +36,7 @@ public class MovFact extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         idvend = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        incliente = new javax.swing.JTextField();
+        idcliente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         fechafact = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -49,7 +51,7 @@ public class MovFact extends javax.swing.JFrame {
         ITBIS = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         satatus = new javax.swing.JTextField();
-        ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -77,7 +79,12 @@ public class MovFact extends javax.swing.JFrame {
 
         jLabel10.setText("Satatus:");
 
-        ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Limpiar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +122,7 @@ public class MovFact extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(numfact)
                     .addComponent(idvend)
-                    .addComponent(incliente)
+                    .addComponent(idcliente)
                     .addComponent(fechafact)
                     .addComponent(fechapago)
                     .addComponent(formapago)
@@ -128,7 +135,7 @@ public class MovFact extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
@@ -153,7 +160,7 @@ public class MovFact extends javax.swing.JFrame {
                     .addComponent(idvend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(incliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,7 +192,7 @@ public class MovFact extends javax.swing.JFrame {
                     .addComponent(satatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ejecutar)
+                    .addComponent(guardar)
                     .addComponent(jButton1)
                     .addComponent(salir))
                 .addContainerGap(13, Short.MAX_VALUE))
@@ -218,13 +225,38 @@ public class MovFact extends javax.swing.JFrame {
         fechapago.setText("");
         formapago.setText("");
         idvend.setText("");
-        incliente.setText("");
+        idcliente.setText("");
         mensaje.setText("");
         numfact.setText("");
         satatus.setText("");
         valorfact.setText("");
         valorsaldo.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    int cont =0;
+    public void validar() {
+        
+        
+        if (numfact.getText().equals("")){cont++;}
+        if (idvend.getText().equals("")){cont++; }
+        if (idcliente.getText().equals("")){cont++; }
+        if (fechafact.getText().equals("")){cont++; }
+        if (formapago.getText().equals("")){cont++; }
+         
+
+    }
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        validar();
+        
+        if (cont != 0){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+        
+        else {
+            
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,12 +295,12 @@ public class MovFact extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ITBIS;
-    private javax.swing.JButton ejecutar;
     private javax.swing.JTextField fechafact;
     private javax.swing.JTextField fechapago;
     private javax.swing.JTextField formapago;
+    private javax.swing.JButton guardar;
+    private javax.swing.JTextField idcliente;
     private javax.swing.JTextField idvend;
-    private javax.swing.JTextField incliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -5,6 +5,8 @@
  */
 package proyectofinallab.visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -44,7 +46,7 @@ public class MovSalidaPro extends javax.swing.JFrame {
         cantproducto = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         costoproduct = new javax.swing.JTextField();
-        Ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -54,7 +56,9 @@ public class MovSalidaPro extends javax.swing.JFrame {
 
         jLabel2.setText("Fecha de entrada:");
 
-        jLabel3.setText("Tipo de entrada:");
+        fechaentrada.setEditable(false);
+
+        jLabel3.setText("Tipo de salida:");
 
         jLabel4.setText("Numero de salida:");
 
@@ -66,7 +70,12 @@ public class MovSalidaPro extends javax.swing.JFrame {
 
         jLabel8.setText("Costo del producto:");
 
-        Ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +119,7 @@ public class MovSalidaPro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(Ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
@@ -154,7 +163,7 @@ public class MovSalidaPro extends javax.swing.JFrame {
                     .addComponent(costoproduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Ejecutar)
+                    .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -188,6 +197,32 @@ public class MovSalidaPro extends javax.swing.JFrame {
         secuencia.setText("");
         tipoentrada.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
+
+    int cont =0;
+    public void validar() {
+        
+        
+        if (numentrada.getText().equals("")){cont++;}
+        if (fechaentrada.getText().equals("")){cont++; }
+        if (tipoentrada.getText().equals("")){cont++; }
+        if (idproduct.getText().equals("")){cont++; }
+        if (cantproducto.getText().equals("")){cont++; }
+        if (costoproduct.getText().equals("")){cont++; } 
+
+    }
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+       
+        validar();
+        
+        if (cont != 0){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+        
+        else{
+            
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,10 +260,10 @@ public class MovSalidaPro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Ejecutar;
     private javax.swing.JTextField cantproducto;
     private javax.swing.JTextField costoproduct;
     private javax.swing.JTextField fechaentrada;
+    private javax.swing.JButton guardar;
     private javax.swing.JTextField idproduct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

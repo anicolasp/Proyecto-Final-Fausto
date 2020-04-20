@@ -54,12 +54,7 @@ public class Menu extends javax.swing.JFrame {
         Consultas = new javax.swing.JMenu();
         consulclient = new javax.swing.JMenuItem();
         consultvend = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        consulfact = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -204,24 +199,8 @@ public class Menu extends javax.swing.JFrame {
         });
         Consultas.add(consultvend);
 
-        jMenu1.setText("De Facturas");
-
-        jMenuItem3.setText("Por numero de factura");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("Rango de fechas");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem5.setText("Por cliente");
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem6.setText("Por fecha de pago");
-        jMenu1.add(jMenuItem6);
-
-        jMenuItem7.setText("Por saldo");
-        jMenu1.add(jMenuItem7);
-
-        Consultas.add(jMenu1);
+        consulfact.setText("De Facturas");
+        Consultas.add(consulfact);
 
         jMenu2.setText("Cobros de facturas");
 
@@ -267,9 +246,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_FileActionPerformed
 
     private void mantusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantusuarioActionPerformed
-        MantUsuario Info = new MantUsuario();
-        Info.setVisible(true);
-        Info.setLocationRelativeTo(null);
+        boolean F = false;
+        
+        if (F = true) {
+            MantUsuario Info = new MantUsuario();
+            Info.setVisible(true);
+            Info.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_mantusuarioActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -388,20 +371,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu Movimientos;
     private javax.swing.JMenuItem Salir;
     private javax.swing.JMenuItem consulclient;
+    private javax.swing.JMenuItem consulfact;
     private javax.swing.JMenuItem consultvend;
     private javax.swing.JMenuItem entradaproductos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;

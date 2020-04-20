@@ -62,7 +62,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="numfact" max="32767" attributes="0"/>
                       <Component id="idvend" max="32767" attributes="0"/>
-                      <Component id="incliente" max="32767" attributes="0"/>
+                      <Component id="idcliente" max="32767" attributes="0"/>
                       <Component id="fechafact" max="32767" attributes="0"/>
                       <Component id="fechapago" max="32767" attributes="0"/>
                       <Component id="formapago" max="32767" attributes="0"/>
@@ -77,7 +77,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="ejecutar" min="-2" pref="77" max="-2" attributes="0"/>
+                          <Component id="guardar" min="-2" pref="77" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="77" max="-2" attributes="0"/>
                           <EmptySpace pref="71" max="32767" attributes="0"/>
@@ -109,7 +109,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="incliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="idcliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -149,7 +149,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ejecutar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="salir" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -183,7 +183,7 @@
             <Property name="text" type="java.lang.String" value="Id del cliente:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="incliente">
+        <Component class="javax.swing.JTextField" name="idcliente">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -234,10 +234,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="satatus">
         </Component>
-        <Component class="javax.swing.JButton" name="ejecutar">
+        <Component class="javax.swing.JButton" name="guardar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ejecutar"/>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

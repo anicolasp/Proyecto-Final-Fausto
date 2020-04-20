@@ -5,6 +5,8 @@
  */
 package proyectofinallab.visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -41,7 +43,7 @@ public class MantProductos extends javax.swing.JFrame {
         exist = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         ITBIS = new javax.swing.JTextField();
-        ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -59,7 +61,12 @@ public class MantProductos extends javax.swing.JFrame {
 
         jLabel6.setText("ITBIS:");
 
-        ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +131,7 @@ public class MantProductos extends javax.swing.JFrame {
                                 .addGap(49, 49, 49))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45))))
@@ -156,7 +163,7 @@ public class MantProductos extends javax.swing.JFrame {
                     .addComponent(ITBIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ejecutar)
+                    .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -189,6 +196,31 @@ public class MantProductos extends javax.swing.JFrame {
         mensaje.setText("");
         pre.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
+
+    int cont =0;
+    public void validar() {
+        
+        
+        if (codpro.getText().equals("")){cont++;}
+        if (descr.getText().equals("")){cont++; }
+        if (pre.getText().equals("")){cont++; }
+        if (costo.getText().equals("")){cont++; }
+        if (ITBIS.getText().equals("")){cont++; }
+         
+
+    }
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        validar();
+        
+        if (cont !=0){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+        
+        else{
+            
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,8 +262,8 @@ public class MantProductos extends javax.swing.JFrame {
     private javax.swing.JTextField codpro;
     private javax.swing.JTextField costo;
     private javax.swing.JTextField descr;
-    private javax.swing.JButton ejecutar;
     private javax.swing.JTextField exist;
+    private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

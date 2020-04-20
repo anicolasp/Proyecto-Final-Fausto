@@ -5,6 +5,8 @@
  */
 package proyectofinallab.visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -38,7 +40,7 @@ public class MovCobroFac extends javax.swing.JFrame {
         valorpagofact = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         fechacobro = new javax.swing.JTextField();
-        ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -54,7 +56,12 @@ public class MovCobroFac extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha cobro:");
 
-        ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +84,7 @@ public class MovCobroFac extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
@@ -126,7 +133,7 @@ public class MovCobroFac extends javax.swing.JFrame {
                     .addComponent(fechacobro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ejecutar)
+                    .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -157,6 +164,33 @@ public class MovCobroFac extends javax.swing.JFrame {
         numfact.setText("");
         valorpagofact.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
+
+    int cont =0;
+    public void validar() {
+        
+        
+        if (idcobro.getText().equals("")){cont++;}
+        if (idclient.getText().equals("")){cont++; }
+        if (numfact.getText().equals("")){cont++; }
+        if (fechacobro.getText().equals("")){cont++; }
+        
+         
+
+    }
+    
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        validar();
+        
+        if (cont != 0){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+        
+        else {
+            
+            
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,8 +228,8 @@ public class MovCobroFac extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ejecutar;
     private javax.swing.JTextField fechacobro;
+    private javax.swing.JButton guardar;
     private javax.swing.JTextField idclient;
     private javax.swing.JTextField idcobro;
     private javax.swing.JLabel jLabel1;

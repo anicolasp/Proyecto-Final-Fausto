@@ -65,7 +65,7 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                  <Component id="Ejecutar" min="-2" pref="77" max="-2" attributes="0"/>
+                  <Component id="guardar" min="-2" pref="77" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Component id="limpiar" min="-2" pref="77" max="-2" attributes="0"/>
                   <EmptySpace pref="52" max="32767" attributes="0"/>
@@ -119,7 +119,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="Ejecutar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="guardar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="limpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="salir" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -142,10 +142,13 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fechaentrada">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo de entrada:"/>
+            <Property name="text" type="java.lang.String" value="Tipo de salida:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tipoentrada">
@@ -185,10 +188,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="costoproduct">
         </Component>
-        <Component class="javax.swing.JButton" name="Ejecutar">
+        <Component class="javax.swing.JButton" name="guardar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ejecutar"/>
+            <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="limpiar">
           <Properties>

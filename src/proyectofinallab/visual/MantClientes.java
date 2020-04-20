@@ -5,10 +5,9 @@
  */
 package proyectofinallab.visual;
 
-/**
- *
- * @author nicol
- */
+import javax.swing.JOptionPane;
+
+
 public class MantClientes extends javax.swing.JFrame {
 
     /**
@@ -44,14 +43,14 @@ public class MantClientes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         correo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         balance = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         limcred = new javax.swing.JTextField();
-        ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        catclient = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,13 +72,16 @@ public class MantClientes extends javax.swing.JFrame {
 
         jLabel8.setText("Categoria:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel9.setText("Balance:");
 
         jLabel10.setText("Limite de credito:");
 
-        ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +129,6 @@ public class MantClientes extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(limcred, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(codclient, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -140,10 +141,11 @@ public class MantClientes extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                                     .addComponent(direccion)
-                                    .addComponent(correo)))))
+                                    .addComponent(correo))
+                                .addComponent(catclient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)
                         .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(97, Short.MAX_VALUE))
@@ -182,7 +184,7 @@ public class MantClientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(catclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -191,10 +193,10 @@ public class MantClientes extends javax.swing.JFrame {
                     .addComponent(limcred, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ejecutar)
+                    .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -211,6 +213,8 @@ public class MantClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
@@ -226,7 +230,38 @@ public class MantClientes extends javax.swing.JFrame {
         mensaje.setText("");
         nombres.setText("");
         telefono.setText("");
+        catclient.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
+    
+    int cont =0;
+    public void validar() {
+        
+        
+        if (codclient.getText().equals("")){cont++;}
+        if (apellidos.getText().equals("")){cont++; }
+        if (correo.getText().equals("")){ cont++;}
+        if (direccion.getText().equals("")){cont++; }
+        if (fechanac.getText().equals("")){cont++; }
+        if (limcred.getText().equals("")){cont++; }
+        if (nombres.getText().equals("")){cont++; }
+        if (telefono.getText().equals("")){cont++; }
+        if (catclient.getText().equals("")){cont++; }
+
+    }
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        validar();
+        
+        
+        if (cont !=0 ){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+        else {
+            
+        }
+        
+
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,12 +301,12 @@ public class MantClientes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidos;
     private javax.swing.JTextField balance;
+    private javax.swing.JTextField catclient;
     private javax.swing.JTextField codclient;
     private javax.swing.JTextField correo;
     private javax.swing.JTextField direccion;
-    private javax.swing.JButton ejecutar;
     private javax.swing.JTextField fechanac;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

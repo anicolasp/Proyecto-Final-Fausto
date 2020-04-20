@@ -5,6 +5,8 @@
  */
 package proyectofinallab.visual;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nicol
@@ -42,7 +44,7 @@ public class MovEntradaProduc extends javax.swing.JFrame {
         cantproduct = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         costoproduct = new javax.swing.JTextField();
-        ejecutar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -62,7 +64,12 @@ public class MovEntradaProduc extends javax.swing.JFrame {
 
         jLabel7.setText("Costo del producto:");
 
-        ejecutar.setText("Ejecutar");
+        guardar.setText("Guardar");
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +111,7 @@ public class MovEntradaProduc extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addComponent(ejecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
@@ -144,7 +151,7 @@ public class MovEntradaProduc extends javax.swing.JFrame {
                     .addComponent(costoproduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ejecutar)
+                    .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -177,6 +184,27 @@ public class MovEntradaProduc extends javax.swing.JFrame {
         secuencia.setText("");
         tipodeentrada.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
+
+    int cont =0;
+    public void validar() {
+        
+        
+        if (idproducto.getText().equals("")){cont++;}
+        if (cantproduct.getText().equals("")){cont++; }
+        if (costoproduct.getText().equals("")){cont++; }
+        if (numentrada.getText().equals("")){cont++; }
+        if (fechaentrada.getText().equals("")){cont++; }
+        if (tipodeentrada.getText().equals("")){cont++; } 
+
+    }
+    
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        validar();
+        
+        if (cont != 0){
+            JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,8 +244,8 @@ public class MovEntradaProduc extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cantproduct;
     private javax.swing.JTextField costoproduct;
-    private javax.swing.JButton ejecutar;
     private javax.swing.JTextField fechaentrada;
+    private javax.swing.JButton guardar;
     private javax.swing.JTextField idproducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
