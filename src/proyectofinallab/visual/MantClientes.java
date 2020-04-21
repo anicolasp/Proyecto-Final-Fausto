@@ -70,9 +70,19 @@ public class MantClientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mensaje.setEditable(false);
+        mensaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mensajeActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Codigo del cliente:");
 
+        codclient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                codclientActionPerformed(evt);
+            }
+        });
         codclient.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 codclientKeyPressed(evt);
@@ -348,6 +358,14 @@ public class MantClientes extends javax.swing.JFrame {
        int i = Integer.parseInt(codclient.getText());
        buscar(Integer.valueOf(codclient.getText()));
     }//GEN-LAST:event_codclientKeyReleased
+
+    private void codclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codclientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_codclientActionPerformed
+
+    private void mensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mensajeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mensajeActionPerformed
 
     private void buscar(Integer id){
         Clientes c = principal.clienteByID(id);
