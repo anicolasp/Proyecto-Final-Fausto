@@ -157,8 +157,8 @@ public class Login extends javax.swing.JFrame {
             contra.setText("");
             systemExit();
             
-            Menu Info = new Menu();
-            Info.setVisible(true);
+            //Menu Info = new Menu();
+            //Info.setVisible(true);
             this.dispose();
         }
         else {
