@@ -233,9 +233,6 @@ public class ClaseLogicaPrincipal {
 		
 	}
 
-    public Vendedor vendedorByID(Integer valueOf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
    
         
             
