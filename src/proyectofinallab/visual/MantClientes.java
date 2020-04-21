@@ -5,15 +5,30 @@
  */
 package proyectofinallab.visual;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import proyectofinallab.logical.ClaseLogicaPrincipal;
+import proyectofinallab.logical.Clientes;
+
 
 
 public class MantClientes extends javax.swing.JFrame {
+    
+    private ClaseLogicaPrincipal principal;
+    private Clientes clientes;
 
     /**
      * Creates new form MantClientes
+     * @param principal
      */
-    public MantClientes() {
+    public MantClientes(ClaseLogicaPrincipal principal) {
+        this.principal = principal;
         initComponents();
     }
 
@@ -57,6 +72,15 @@ public class MantClientes extends javax.swing.JFrame {
         mensaje.setEditable(false);
 
         jLabel1.setText("Codigo del cliente:");
+
+        codclient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codclientKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codclientKeyReleased(evt);
+            }
+        });
 
         jLabel2.setText("Nombres: ");
 
@@ -220,6 +244,10 @@ public class MantClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+       limpiar();
+    }//GEN-LAST:event_limpiarActionPerformed
+    
+    public void limpiar(){
         apellidos.setText("");
         balance.setText("");
         codclient.setText("");
@@ -227,12 +255,12 @@ public class MantClientes extends javax.swing.JFrame {
         direccion.setText("");
         fechanac.setText("");
         limcred.setText("");
-        mensaje.setText("");
         nombres.setText("");
         telefono.setText("");
         catclient.setText("");
-    }//GEN-LAST:event_limpiarActionPerformed
-    
+        mensaje.setText("");
+        
+    }
     int cont =0;
     public void validar() {
         
@@ -251,18 +279,106 @@ public class MantClientes extends javax.swing.JFrame {
     
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         validar();
-        
-        
+      
+      
         if (cont !=0 ){
             JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
         }
-        else {
+        else{
+              if(mensaje.getText().equals("Creando")){
+                Integer id = Integer.valueOf(codclient.getText());
+                String nombre = nombres.getText();
+                String apellido = apellidos.getText();
+                String fechan = fechanac.getText();
+                String tel = telefono.getText();
+                String direc = direccion.getText();
+                String email = correo.getText();
+                Integer cat = Integer.valueOf(catclient.getText());
+                double limcre = Double.valueOf(limcred.getText());
+                double balance = 0;
+
+                Date date1;
+                try {
+                    date1 = new SimpleDateFormat("dd/MM/yyyy").parse(fechan);
+                    Clientes F = new Clientes(id, nombre, apellido, direc, date1, tel, email, cat, balance, limcre);
+                    principal.insertClientes(F);
+                    JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    limpiar();
+                    System.out.print(principal.getMisClientes().size());
+                    
+
+                } catch (ParseException ex) {
+                    Logger.getLogger(MantClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+              }else{
+                   
+                Clientes aux = principal.clienteByID(Integer.valueOf(codclient.getText()));
+                aux.setNombrecliente(nombres.getText());
+                aux.setApellidoscliente(apellidos.getText());
+                String fechana = fechanac.getText();
+                Date date12;
+                try {
+                    date12 = new SimpleDateFormat("dd/MM/yyyy").parse(fechana);
+                    aux.setFechaNaci(date12);
+                } catch (ParseException ex) {
+                    Logger.getLogger(MantClientes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                aux.setTelefonocliente(telefono.getText());
+                aux.setDireccioncliente(direccion.getText());
+                aux.setCorreocliente(correo.getText());
+                aux.setCategoriacliente(Integer.valueOf(catclient.getText()));
+                aux.setLimiteCredito(Double.valueOf(limcred.getText()));
+
+        
             
+              }
         }
+            
+            
+       
         
 
     }//GEN-LAST:event_guardarActionPerformed
 
+    private void codclientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codclientKeyPressed
+ 
+    }//GEN-LAST:event_codclientKeyPressed
+
+    private void codclientKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codclientKeyReleased
+         int i = Integer.parseInt(codclient.getText());
+       buscar(Integer.valueOf(codclient.getText()));
+    }//GEN-LAST:event_codclientKeyReleased
+
+    private void buscar(Integer id){
+        Clientes c = principal.clienteByID(id);
+         if (c == null) {
+            mensaje.setText("Creando");
+            apellidos.setText("");
+            balance.setText("");
+            correo.setText("");
+            direccion.setText("");
+            fechanac.setText("");
+            limcred.setText("");
+            nombres.setText("");
+            telefono.setText("");
+            catclient.setText("");
+             
+        } else {
+            mensaje.setText("Modificando");
+            nombres.setText(c.getNombrecliente());
+            apellidos.setText(c.getApellidoscliente());
+            telefono.setText(c.getTelefonocliente());
+            direccion.setText(c.getDireccioncliente());
+            correo.setText(c.getCorreocliente());
+            catclient.setText(String.valueOf(c.getCategoriacliente()));
+            limcred.setText(String.valueOf(c.getLimiteCredito()));
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            fechanac.setText(sdf.format(c.getFechaNaci()));
+            
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -293,7 +409,7 @@ public class MantClientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MantClientes().setVisible(true);
+               
             }
         });
     }

@@ -1,9 +1,10 @@
 package proyectofinallab.logical;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Clientes {
+public class Clientes implements Serializable{
     
     private Integer idcliente;
     private String nombrecliente;

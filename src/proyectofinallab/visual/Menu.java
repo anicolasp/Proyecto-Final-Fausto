@@ -5,6 +5,14 @@
  */
 package proyectofinallab.visual;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyectofinallab.logical.ClaseLogicaPrincipal;
+import proyectofinallab.logical.Clientes;
 import proyectofinallab.visual.MantUsuario;
 
 /**
@@ -12,12 +20,22 @@ import proyectofinallab.visual.MantUsuario;
  * @author nicol
  */
 public class Menu extends javax.swing.JFrame {
+    
+    public ClaseLogicaPrincipal principal;
 
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu(ClaseLogicaPrincipal p) throws IOException, ClassNotFoundException {
+        ClaseLogicaPrincipal pr = ClaseLogicaPrincipal.getInstance();
+        this.principal = pr;
+       // this.principal.loadData();
+    
         initComponents();
+    }
+
+    Menu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -260,7 +278,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void mantclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantclientesActionPerformed
-        MantClientes Info = new MantClientes();
+        MantClientes Info = new MantClientes(this.principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_mantclientesActionPerformed
@@ -302,7 +320,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_salidaproductosActionPerformed
 
     private void consulclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulclientActionPerformed
-        MantClientes Info = new MantClientes();
+        MantClientes Info = new MantClientes(principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_consulclientActionPerformed
@@ -355,11 +373,25 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                 
                 //new Menu().setVisible(true);
-                Menu obj = new Menu ();
+      
+                ClaseLogicaPrincipal p = ClaseLogicaPrincipal.getInstance();
+                Menu obj = null;
+                try {
+                    obj = new Menu (p);
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 obj.setTitle("Menu");
                 obj.setLocationRelativeTo(null); //para centrar el panel
                 obj.setVisible(true);
+               
+              
+                
+                
             }
         });
     }
