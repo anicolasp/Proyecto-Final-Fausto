@@ -71,19 +71,25 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem9.setText("jMenuItem9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu de inicio");
+        setBackground(new java.awt.Color(51, 204, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicol\\Desktop\\Uni 2-2019-2020\\Programacion 2\\Lab Programacion 2\\img4-610x381.jpg")); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setBackground(new java.awt.Color(0, 153, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinallab/visual/imagenes/imagen2.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -97,6 +103,8 @@ public class Menu extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         File.setText("File");
         File.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +113,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         Salir.setText("Salir");
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
@@ -117,6 +126,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.setText("Mantenimientos");
 
         mantusuario.setText("De Usuario");
+        mantusuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mantusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantusuarioActionPerformed(evt);
@@ -125,6 +135,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.add(mantusuario);
 
         mantclientes.setText("De Clientes");
+        mantclientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mantclientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantclientesActionPerformed(evt);
@@ -133,6 +144,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.add(mantclientes);
 
         mantvendedor.setText("De Vendedor");
+        mantvendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mantvendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantvendedorActionPerformed(evt);
@@ -141,6 +153,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.add(mantvendedor);
 
         mantproductos.setText("De Productos");
+        mantproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mantproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantproductosActionPerformed(evt);
@@ -153,6 +166,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.setText("Movimientos");
 
         movfactura.setText("De Factura");
+        movfactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         movfactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 movfacturaActionPerformed(evt);
@@ -160,7 +174,8 @@ public class Menu extends javax.swing.JFrame {
         });
         Movimientos.add(movfactura);
 
-        entradaproductos.setText("Entrada de porductos");
+        entradaproductos.setText("Entrada de productos");
+        entradaproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         entradaproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entradaproductosActionPerformed(evt);
@@ -169,6 +184,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.add(entradaproductos);
 
         salidaproductos.setText("Salida de productos");
+        salidaproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salidaproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salidaproductosActionPerformed(evt);
@@ -177,6 +193,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.add(salidaproductos);
 
         movcobrofact.setText("Cobro Factura");
+        movcobrofact.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         movcobrofact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 movcobrofactActionPerformed(evt);
@@ -189,6 +206,7 @@ public class Menu extends javax.swing.JFrame {
         Consultas.setText("Consultas");
 
         consulclient.setText("De Clientes");
+        consulclient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consulclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consulclientActionPerformed(evt);
@@ -197,6 +215,7 @@ public class Menu extends javax.swing.JFrame {
         Consultas.add(consulclient);
 
         consultvend.setText("De Vendedores");
+        consultvend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         consultvend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultvendActionPerformed(evt);
@@ -207,18 +226,23 @@ public class Menu extends javax.swing.JFrame {
         jMenu1.setText("De Facturas");
 
         jMenuItem3.setText("Por numero de factura");
+        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Rango de fechas");
+        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Por cliente");
+        jMenuItem5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.add(jMenuItem5);
 
         jMenuItem6.setText("Por fecha de pago");
+        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.add(jMenuItem6);
 
         jMenuItem7.setText("Por saldo");
+        jMenuItem7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.add(jMenuItem7);
 
         Consultas.add(jMenu1);
@@ -259,6 +283,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void FileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileActionPerformed
