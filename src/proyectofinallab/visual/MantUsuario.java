@@ -1,22 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinallab.visual;
 
 import javax.swing.JOptionPane;
+import proyectofinallab.logical.ClaseLogicaPrincipal;
+import proyectofinallab.logical.Usuarios;
 
-/**
- *
- * @author nicol
- */
+
 public class MantUsuario extends javax.swing.JFrame {
+    
+    private ClaseLogicaPrincipal principal;
+    private Usuarios usuarios;
 
     /**
      * Creates new form MantUsuario
+     * @param principal
      */
-    public MantUsuario() {
+    public MantUsuario(ClaseLogicaPrincipal principal) {
+        this.principal = principal;
         initComponents();
     }
 
@@ -63,6 +62,12 @@ public class MantUsuario extends javax.swing.JFrame {
 
         jLabel10.setText("Email del usuario");
 
+        loginusu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                loginusuKeyReleased(evt);
+            }
+        });
+
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +76,11 @@ public class MantUsuario extends javax.swing.JFrame {
         });
 
         jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         registrar.setText("Registrar");
         registrar.addActionListener(new java.awt.event.ActionListener() {
@@ -185,15 +195,88 @@ public class MantUsuario extends javax.swing.JFrame {
     
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         validar();
+        registrar.setVisible(false);
         
         if (cont != 0){
             JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
         }
         else {
             
+            if (Integer.valueOf(nivelacc.equals("1"))){
+                registrar.setVisible(true);
+            }
+                
+                if (mensaje.getText().equals("Creando")) {
+                    String logusu = loginusu.getText();
+                    String pasusu = passusu.getText();
+                    Integer nivel = Integer.valueOf(nivelacc.getText());
+                    String nom = nomusu.getText();
+                    String apellido = apellidosusu.getText();
+                    String correo = emailusu.getText();
+
+                    Usuarios u = new Usuarios(logusu, pasusu, nivel, nom, apellido, correo);
+                    principal.insertUsuarios(u);
+                    JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    limpiar();
+                    System.out.print(principal.getMisUsuarios().size());
+                }else {
+                    
+                    Usuarios aux = principal.usuBylogin(loginusu.getText());
+                    aux.setPasusu(passusu.getText());
+                    aux.setNivellac(Integer.valueOf(nivelacc.getText()));
+                    aux.setNombreusu(nomusu.getText());
+                    aux.setApellidousu(apellidosusu.getText());
+                    aux.setEmailusu(emailusu.getText());
+                    
+                }
+                
+            
+            
+            
         }
     }//GEN-LAST:event_registrarActionPerformed
 
+    private void buscar(String login){
+        Usuarios c = principal.usuBylogin(login);
+         if (c == null) {
+            mensaje.setText("Creando");
+            loginusu.setText("");
+            passusu.setText("");
+            nivelacc.setText("");
+            nomusu.setText("");
+            apellidosusu.setText("");
+            emailusu.setText("");
+             
+        } else {
+            mensaje.setText("Modificando");
+            loginusu.setText(c.getLoginusu());
+            passusu.setText(c.getPasusu());
+            nivelacc.setText(String.valueOf(c.getNivelac()));
+            nomusu.setText(c.getNombreusu());
+            apellidosusu.setText(c.getApellidousu());
+            emailusu.setText(c.getEmailusu());
+            
+        }
+        
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void loginusuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginusuKeyReleased
+
+       buscar(loginusu.getText());
+    }//GEN-LAST:event_loginusuKeyReleased
+
+    public void limpiar(){
+        loginusu.setText("");
+        passusu.setText("");
+        nivelacc.setText("");
+        nomusu.setText("");
+        apellidosusu.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -224,7 +307,7 @@ public class MantUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MantUsuario().setVisible(true);
+               // new MantUsuario().setVisible(true);
             }
         });
     }

@@ -20,6 +20,8 @@ public class ClaseLogicaPrincipal {
     private ArrayList<Usuarios> misUsuarios;
     private ArrayList<Factura> misFacturas;
     private ArrayList<Vendedor> misVendedores;
+    private ArrayList<Producto> misProductos;
+    private ArrayList<Cobrofactura> misCobros;
     private static ClaseLogicaPrincipal principal = null;
     
     public ClaseLogicaPrincipal(){
@@ -27,6 +29,9 @@ public class ClaseLogicaPrincipal {
         misClientes = new ArrayList<>();
         misUsuarios = new ArrayList<>();
         misFacturas = new ArrayList<>();
+        misVendedores = new ArrayList<>();
+        misProductos = new ArrayList<>();
+        misCobros = new ArrayList<>();
     }
     
     public static ClaseLogicaPrincipal getInstance(){
@@ -50,7 +55,7 @@ public class ClaseLogicaPrincipal {
         return misUsuarios;
     }
     
-    public void setMisUsuarios(ArrayList<Usuarios>misUsuarios){
+    public void setMisUsuarios(ArrayList<Usuarios> misUsuarios){
         this.misUsuarios = misUsuarios;
     }
     
@@ -58,8 +63,32 @@ public class ClaseLogicaPrincipal {
         return misFacturas;
     }
     
-    public void setMisFacturas(ArrayList<Factura>misFacturas){
+    public void setMisFacturas(ArrayList<Factura> misFacturas){
         this.misFacturas = misFacturas;
+    }
+    
+    public ArrayList<Vendedor> getMisVendedores(){
+        return misVendedores;
+    }
+    
+    public void setMisVendedores(ArrayList<Vendedor> misVendedores){
+        this.misVendedores = misVendedores;
+    }
+    
+    public ArrayList<Producto> getMisProductos(){
+        return misProductos;
+    }
+    
+    public void setMisProductos(ArrayList<Producto> misProductos){
+        this.misProductos = misProductos;
+    }
+    
+    public ArrayList<Cobrofactura> getMisCobros(){
+        return misCobros;
+    }
+    
+    public void setMisCobros(ArrayList<Cobrofactura> misCobros){
+        this.misCobros = misCobros;
     }
     
     public void insertClientes (Clientes aux){
@@ -72,6 +101,18 @@ public class ClaseLogicaPrincipal {
     
     public void insertFactura (Factura aux){
         misFacturas.add(aux);
+    }
+    
+    public void insertVendedor (Vendedor aux){
+        misVendedores.add(aux);
+    }
+    
+    public void insertProductos (Producto aux){
+        misProductos.add(aux);
+    }
+    
+    public void insertCobros(Cobrofactura aux){
+        misCobros.add(aux);
     }
     
    public Clientes clienteByID(Integer id){
@@ -90,25 +131,63 @@ public class ClaseLogicaPrincipal {
         return c;
     }
    
+   public Usuarios usuBylogin(String login){
+       Usuarios c = null;
+        boolean encontrado = false;
+        int i = 0;
+        while(!encontrado && i<misUsuarios.size()){
+            for (Usuarios aux : misUsuarios) {
+                if(aux.getLoginusu()== login) {
+                    c = aux;
+                    encontrado = true;
+                }
+                        i++;
+            }
+        }
+        return c;
+   }
+   
+   public Producto productoByID(String id){
+        Producto c = null;
+        boolean encontrado = false;
+        int i = 0;
+        while(!encontrado && i<misProductos.size()){
+            for (Producto aux : misProductos) {
+                if(aux.getIdproducto()== id) {
+                    c = aux;
+                    encontrado = true;
+                }
+                        i++;
+            }
+        }
+        return c;
+    }
+   
    public void saveData() throws IOException {
 	
 		FileOutputStream cliente = new FileOutputStream ("Clientes.dat");
-		
+		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
 		
 		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
+                ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
 		
 		
 		clientes.writeInt(misClientes.size());
+                usuarios.writeInt(misUsuarios.size());
 			
 		for (Clientes aux : misClientes) {
-			clientes.writeObject(aux);
-			
+			clientes.writeObject(aux);	
+		}
+                
+                for (Usuarios aux : misUsuarios) {
+			usuarios.writeObject(aux);	
 		}
 		
 		
 		
 		
 		cliente.close();
+                usuario.close();
 		
 		
 	}

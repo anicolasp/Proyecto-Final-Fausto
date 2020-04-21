@@ -267,7 +267,7 @@ public class Menu extends javax.swing.JFrame {
         boolean F = false;
         
         if (F = true) {
-            MantUsuario Info = new MantUsuario();
+            MantUsuario Info = new MantUsuario(this.principal);
             Info.setVisible(true);
             Info.setLocationRelativeTo(null);
         }
@@ -290,7 +290,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mantvendedorActionPerformed
 
     private void mantproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantproductosActionPerformed
-        MantProductos Info = new MantProductos();
+        MantProductos Info = new MantProductos(this.principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_mantproductosActionPerformed

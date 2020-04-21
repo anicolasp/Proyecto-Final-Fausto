@@ -345,7 +345,7 @@ public class MantClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_codclientKeyPressed
 
     private void codclientKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codclientKeyReleased
-         int i = Integer.parseInt(codclient.getText());
+       int i = Integer.parseInt(codclient.getText());
        buscar(Integer.valueOf(codclient.getText()));
     }//GEN-LAST:event_codclientKeyReleased
 

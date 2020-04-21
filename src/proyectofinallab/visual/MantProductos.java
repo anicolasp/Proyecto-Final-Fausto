@@ -1,22 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyectofinallab.visual;
 
 import javax.swing.JOptionPane;
+import proyectofinallab.logical.ClaseLogicaPrincipal;
+import proyectofinallab.logical.Producto;
 
 /**
  *
  * @author nicol
  */
 public class MantProductos extends javax.swing.JFrame {
+    
+    private ClaseLogicaPrincipal principal;
+    private Producto producto;
 
     /**
      * Creates new form MantProductos
+     * @param principal
      */
-    public MantProductos() {
+    public MantProductos(ClaseLogicaPrincipal principal) {
+        this.principal = principal;
         initComponents();
     }
 
@@ -50,6 +52,15 @@ public class MantProductos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Codigo del producto:");
+
+        codpro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                codproKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                codproKeyReleased(evt);
+            }
+        });
 
         jLabel2.setText("Descripcion:");
 
@@ -188,6 +199,10 @@ public class MantProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    public void limpiar(){
         ITBIS.setText("");
         codpro.setText("");
         costo.setText("");
@@ -195,8 +210,8 @@ public class MantProductos extends javax.swing.JFrame {
         exist.setText("");
         mensaje.setText("");
         pre.setText("");
-    }//GEN-LAST:event_limpiarActionPerformed
-
+    }
+    
     int cont =0;
     public void validar() {
         
@@ -216,12 +231,68 @@ public class MantProductos extends javax.swing.JFrame {
         if (cont !=0){
             JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
         }
-        
         else{
+            if(mensaje.getText().equals("Creando")){
+                String codigopro = codpro.getText();
+                String descri = descr.getText();
+                double precio = Double.valueOf(pre.getText());
+                double cost = Double.valueOf(costo.getText());
+                float existencia = Float.valueOf(exist.getText());
+                boolean itbis = ITBIS.getText();
+                
+                Producto p = new Producto(codigopro, descri, precio, cost, existencia, itbis);
+                principal.insertProducto(p);
+                JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
+                System.out.print(principal.getMisProductos().size());
+            }else {
+       
+                Producto aux = principal.productoByID(codpro.getText());
+                aux.setDescripcionproducto(descr.getText());
+                aux.setPrecioproducto(Double.valueOf(pre.getText()));
+                aux.setCostoproducto(Double.valueOf(costo.getText()));
+                aux.getExistenciaproducto(Float.valueOf(exist.getText()));
+                
+                
+                
+            }
             
         }
     }//GEN-LAST:event_guardarActionPerformed
 
+    private void codproKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codproKeyPressed
+
+    }//GEN-LAST:event_codproKeyPressed
+
+    private void codproKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codproKeyReleased
+        //int i = codpro.getText();
+        Buscar(codpro.getText());
+    }//GEN-LAST:event_codproKeyReleased
+
+    
+    
+    
+    private void Buscar(String id){
+        Producto c = principal.productoByID(id);
+        if(c == null){
+            mensaje.setText("Creando");
+            codpro.setText("");
+            descr.setText("");
+            pre.setText("");
+            costo.setText("");
+            exist.setText("");
+            ITBIS.setText("");
+        }else {
+            mensaje.setText("Modificando");
+            codpro.setText(c.getIdproducto());
+            descr.setText(c.getDescripcionproducto());
+            pre.setText(Double.parseDouble(c.getCostoproducto()));
+            costo.setText(Double.parseDouble(c.getCostoproducto()));
+            exist.setText(c.getExistenciaproducto());
+        }
+        
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -252,7 +323,7 @@ public class MantProductos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MantProductos().setVisible(true);
+                //new MantProductos().setVisible(true);
             }
         });
     }
