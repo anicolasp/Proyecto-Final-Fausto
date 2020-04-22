@@ -153,7 +153,7 @@ public class ClaseLogicaPrincipal {
         int i = 0;
         while(!encontrado && i<misProductos.size()){
             for (Producto aux : misProductos) {
-                if(aux.getIdproducto()== id) {
+                if(aux.getIdproducto().equalsIgnoreCase(id)) {                
                     c = aux;
                     encontrado = true;
                 }
@@ -185,25 +185,25 @@ public class ClaseLogicaPrincipal {
 		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
 		
 		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
-                ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
+              //  ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
 		
 		
 		clientes.writeInt(misClientes.size());
-                usuarios.writeInt(misUsuarios.size());
+            //    usuarios.writeInt(misUsuarios.size());
 			
 		for (Clientes aux : misClientes) {
 			clientes.writeObject(aux);	
 		}
                 
-                for (Usuarios aux : misUsuarios) {
+               /* for (Usuarios aux : misUsuarios) {
 			usuarios.writeObject(aux);	
-		}
+		}*/
 		
 		
 		
 		
 		cliente.close();
-                usuario.close();
+              //  usuario.close();
 		
 		
 	}

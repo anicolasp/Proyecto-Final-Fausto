@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import proyectofinallab.logical.ClaseLogicaPrincipal;
 import proyectofinallab.logical.Clientes;
+import proyectofinallab.logical.Usuarios;
 import proyectofinallab.visual.MantUsuario;
 
 /**
@@ -22,6 +23,7 @@ import proyectofinallab.visual.MantUsuario;
 public class Menu extends javax.swing.JFrame {
     
     public ClaseLogicaPrincipal principal;
+    public Usuarios u;
 
     /**
      * Creates new form Menu
@@ -29,6 +31,11 @@ public class Menu extends javax.swing.JFrame {
     public Menu(ClaseLogicaPrincipal p) throws IOException, ClassNotFoundException {
         ClaseLogicaPrincipal pr = ClaseLogicaPrincipal.getInstance();
         this.principal = pr;
+    
+        Usuarios u = new Usuarios("admin", "admin", 0, "admin", "admine", "admin@admin.com");
+        this.u = u;
+        principal.insertUsuarios(u);
+        
        // this.principal.loadData();
     
         initComponents();
@@ -264,13 +271,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_FileActionPerformed
 
     private void mantusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantusuarioActionPerformed
-        boolean F = false;
-        
-        if (F = true) {
-            MantUsuario Info = new MantUsuario(this.principal);
+         
+            MantUsuario Info = new MantUsuario(this.principal,u);
             Info.setVisible(true);
             Info.setLocationRelativeTo(null);
-        }
+        
     }//GEN-LAST:event_mantusuarioActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
@@ -320,7 +325,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_salidaproductosActionPerformed
 
     private void consulclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulclientActionPerformed
-        MantClientes Info = new MantClientes(principal);
+        ConsultaClientes Info = new ConsultaClientes(principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_consulclientActionPerformed

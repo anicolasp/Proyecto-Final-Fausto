@@ -8,15 +8,19 @@ import proyectofinallab.logical.Usuarios;
 public class MantUsuario extends javax.swing.JFrame {
     
     private ClaseLogicaPrincipal principal;
-    private Usuarios usuarios;
 
     /**
      * Creates new form MantUsuario
      * @param principal
      */
-    public MantUsuario(ClaseLogicaPrincipal principal) {
+    public MantUsuario(ClaseLogicaPrincipal principal, Usuarios usuario) {
         this.principal = principal;
+        System.out.print(usuario.getLoginusu());
+        
         initComponents();
+        if(usuario.getNivelac() == 0){
+            registrar.setEnabled(true);
+        }
     }
 
     /**
@@ -83,6 +87,7 @@ public class MantUsuario extends javax.swing.JFrame {
         });
 
         registrar.setText("Registrar");
+        registrar.setEnabled(false);
         registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarActionPerformed(evt);
@@ -201,10 +206,7 @@ public class MantUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
         }
         else {
-            
-            if (Integer.valueOf(nivelacc.equals("1"))){
-                registrar.setVisible(true);
-            }
+          
                 
                 if (mensaje.getText().equals("Creando")) {
                     String logusu = loginusu.getText();
@@ -230,17 +232,16 @@ public class MantUsuario extends javax.swing.JFrame {
                     
                 }
                 
+            }
             
             
-            
-        }
+        
     }//GEN-LAST:event_registrarActionPerformed
 
     private void buscar(String login){
         Usuarios c = principal.usuBylogin(login);
          if (c == null) {
             mensaje.setText("Creando");
-            loginusu.setText("");
             passusu.setText("");
             nivelacc.setText("");
             nomusu.setText("");
@@ -310,6 +311,8 @@ public class MantUsuario extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                // new MantUsuario().setVisible(true);
+               
+               
             }
         });
     }

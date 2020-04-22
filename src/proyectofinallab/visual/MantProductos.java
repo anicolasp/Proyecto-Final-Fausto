@@ -43,11 +43,10 @@ public class MantProductos extends javax.swing.JFrame {
         costo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         exist = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        ITBIS = new javax.swing.JTextField();
         guardar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        ITBIS = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,8 +71,6 @@ public class MantProductos extends javax.swing.JFrame {
 
         jLabel5.setText("Existencia:");
 
-        jLabel6.setText("ITBIS:");
-
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +89,14 @@ public class MantProductos extends javax.swing.JFrame {
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
+            }
+        });
+
+        ITBIS.setForeground(new java.awt.Color(0, 0, 0));
+        ITBIS.setText("ITBIS");
+        ITBIS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ITBISActionPerformed(evt);
             }
         });
 
@@ -129,14 +134,13 @@ public class MantProductos extends javax.swing.JFrame {
                                 .addGap(41, 41, 41)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(ITBIS))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(costo)))))
-                        .addContainerGap(61, Short.MAX_VALUE))
+                                        .addComponent(costo, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(ITBIS, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -172,14 +176,13 @@ public class MantProductos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(exist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(ITBIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(ITBIS))
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
                     .addComponent(limpiar)
                     .addComponent(salir))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -205,7 +208,6 @@ public class MantProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarActionPerformed
 
     public void limpiar(){
-        ITBIS.setText("");
         codpro.setText("");
         costo.setText("");
         descr.setText("");
@@ -222,7 +224,7 @@ public class MantProductos extends javax.swing.JFrame {
         if (descr.getText().equals("")){cont++; }
         if (pre.getText().equals("")){cont++; }
         if (costo.getText().equals("")){cont++; }
-        if (ITBIS.getText().equals("")){cont++; }
+        
          
 
     }
@@ -240,11 +242,16 @@ public class MantProductos extends javax.swing.JFrame {
                 double precio = Double.valueOf(pre.getText());
                 double cost = Double.valueOf(costo.getText());
                 float existencia = Float.valueOf(exist.getText());
-                boolean itbis = ITBIS.getText();
+                boolean itbis = false;
+                if (ITBIS.isSelected()){
+                   itbis = true;
+                }else{
+                    itbis = false;
+                }
                 
                 Producto p = new Producto(codigopro, descri, precio, cost, existencia, itbis);
-                principal.insertProducto(p);
-                JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
+                principal.insertProductos(p);
+                JOptionPane.showMessageDialog(null, "Producto guardado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
                 limpiar();
                 System.out.print(principal.getMisProductos().size());
             }else {
@@ -253,7 +260,16 @@ public class MantProductos extends javax.swing.JFrame {
                 aux.setDescripcionproducto(descr.getText());
                 aux.setPrecioproducto(Double.valueOf(pre.getText()));
                 aux.setCostoproducto(Double.valueOf(costo.getText()));
-                aux.getExistenciaproducto(Float.valueOf(exist.getText()));
+                aux.setExistenciaproducto(Float.valueOf(exist.getText()));
+                boolean itbis = false;
+                 if (ITBIS.isSelected()){
+                    itbis = true;
+                 }else{
+                     itbis = false;
+                 }
+                aux.setItbisproducto(itbis);
+                 JOptionPane.showMessageDialog(null, "Producto modificado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+                 limpiar();
                 
                 
                 
@@ -267,30 +283,36 @@ public class MantProductos extends javax.swing.JFrame {
     }//GEN-LAST:event_codproKeyPressed
 
     private void codproKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codproKeyReleased
-        //int i = codpro.getText();
+
         Buscar(codpro.getText());
+        
     }//GEN-LAST:event_codproKeyReleased
+
+    private void ITBISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ITBISActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ITBISActionPerformed
 
     
     
     
     private void Buscar(String id){
         Producto c = principal.productoByID(id);
+        System.out.print(principal.getMisProductos().size());
         if(c == null){
             mensaje.setText("Creando");
-            codpro.setText("");
             descr.setText("");
             pre.setText("");
             costo.setText("");
             exist.setText("");
-            ITBIS.setText("");
+            ITBIS.setSelected(false);
         }else {
             mensaje.setText("Modificando");
             codpro.setText(c.getIdproducto());
             descr.setText(c.getDescripcionproducto());
-            pre.setText(Double.parseDouble(c.getCostoproducto()));
-            costo.setText(Double.parseDouble(c.getCostoproducto()));
-            exist.setText(c.getExistenciaproducto());
+            pre.setText(Double.valueOf(c.getPrecioproducto()).toString());
+            costo.setText(Double.valueOf(c.getCostoproducto()).toString());
+            exist.setText(Float.valueOf(c.getExistenciaproducto()).toString());
+            ITBIS.setSelected(c.getItbisproducto());
         }
         
     }
@@ -331,7 +353,7 @@ public class MantProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ITBIS;
+    private javax.swing.JRadioButton ITBIS;
     private javax.swing.JTextField codpro;
     private javax.swing.JTextField costo;
     private javax.swing.JTextField descr;
@@ -342,7 +364,6 @@ public class MantProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton limpiar;
     private javax.swing.JTextField mensaje;
