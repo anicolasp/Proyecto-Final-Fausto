@@ -229,7 +229,7 @@ public class ConsultaClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_idsinrangoActionPerformed
 
     private void idrangoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idrangoActionPerformed
-  txtID.setEnabled(false);
+         txtID.setEnabled(false);
          txtde.setEnabled(true);
          txthasta.setEnabled(true);
          lblde.setEnabled(true);
@@ -250,9 +250,14 @@ public class ConsultaClientes extends javax.swing.JFrame {
 
     private void txtIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyReleased
         // TODO add your handling code here:
-      
-        Integer s = Integer.valueOf(txtID.getText());
-        loaddatabyID(s);
+        
+        if(txtID.getText().equalsIgnoreCase("")){
+            loaddata();
+        }else{
+            Integer s = Integer.valueOf(txtID.getText());
+            loaddatabyID(s);
+        }
+        
        
           
 
@@ -269,9 +274,15 @@ public class ConsultaClientes extends javax.swing.JFrame {
 
     private void txthastaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txthastaKeyReleased
         // TODO add your handling code here:
-          Integer s1 = Integer.valueOf(txtde.getText());
-          Integer s2 = Integer.valueOf(txthasta.getText());
-           loaddatabyRango(s1,s2);
+        if(txtde.getText().equalsIgnoreCase("") || txthasta.getText().equalsIgnoreCase("")){
+            loaddata();
+        }else{
+            Integer s1 = Integer.valueOf(txtde.getText());
+            Integer s2 = Integer.valueOf(txthasta.getText());
+            loaddatabyRango(s1, s2);
+            
+        }
+          
     }//GEN-LAST:event_txthastaKeyReleased
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed

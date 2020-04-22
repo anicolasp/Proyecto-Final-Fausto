@@ -27,7 +27,7 @@ public class Clientes implements Serializable{
         this.telefonocliente = telefonocliente;
         this.correocliente = correocliente;
         this.categoriacliente = categoriacliente;
-        this.balancecliente = balancecliente;
+        this.balancecliente = 0;
         this.limitecreditocliente = limitecreditocliente;
     }
     

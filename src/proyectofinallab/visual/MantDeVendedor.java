@@ -255,6 +255,9 @@ public class MantDeVendedor extends javax.swing.JFrame {
                 String nombre = nombres.getText();
                 String apellido = apellidos.getText();
                 double porcvent = Double.valueOf(porvent.getText());
+                if(porcvent <= 0){
+                     JOptionPane.showMessageDialog(null, "El porcentaje de venta debe ser mayor que 0", "Error", JOptionPane.ERROR_MESSAGE);
+                }
                 mayor_porcentaje_venta(porcvent);
                 double valor_ganado_venta = 0;
                 

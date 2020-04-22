@@ -161,6 +161,22 @@ public class ClaseLogicaPrincipal {
         }
         return c;
     }
+    
+    public Factura facturaporNumdeFact(Integer id) {
+        Factura c = null;
+        boolean encontrado = false;
+        int i = 0;
+        while (!encontrado && i < misFacturas.size()) {
+            for (Factura aux : misFacturas) {
+                if (aux.getNumfact().equals(id)) {
+                    c = aux;
+                    encontrado = true;
+                }
+                i++;
+            }
+        }
+        return c;
+    }
 
     public Vendedor vendedorByID(Integer id) {
         Vendedor vendedor1 = null;
@@ -200,16 +216,19 @@ public class ClaseLogicaPrincipal {
         FileOutputStream usuario = new FileOutputStream("Usuarios.dat");
         FileOutputStream vendedor = new FileOutputStream("Vendedores.dat");
         FileOutputStream producto = new FileOutputStream("Productos.dat");
+        FileOutputStream factura = new FileOutputStream("Facturas.dat");
 
         ObjectOutputStream clientes = new ObjectOutputStream(cliente);
         ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
         ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
         ObjectOutputStream productos = new ObjectOutputStream(producto);
-
+        ObjectOutputStream facturas = new ObjectOutputStream(factura);   
+        
         clientes.writeInt(misClientes.size());
         usuarios.writeInt(misUsuarios.size());
         vendedores.writeInt(misVendedores.size());
         productos.writeInt(misProductos.size());
+        facturas.writeInt(misFacturas.size());
 
         for (Clientes aux : misClientes) {
             clientes.writeObject(aux);
@@ -225,11 +244,15 @@ public class ClaseLogicaPrincipal {
         for (Producto aux : misProductos) {
             productos.writeObject(aux);
         }
+         for (Factura aux : misFacturas) {
+            facturas.writeObject(aux);
+        }
 
         cliente.close();
         vendedores.close();
         usuario.close();
         producto.close();
+        factura.close();
 
     }
 
@@ -239,16 +262,19 @@ public class ClaseLogicaPrincipal {
         FileInputStream usuario = new FileInputStream("Usuarios.dat");
         FileInputStream vendedor = new FileInputStream("Vendedores.dat");
         FileInputStream producto = new FileInputStream("Productos.dat");
+        FileInputStream factura = new FileInputStream("Facturas.dat");
        
         ObjectInputStream clientes = new ObjectInputStream(cliente);
         ObjectInputStream usuarios = new ObjectInputStream(usuario);
         ObjectInputStream vendedores = new ObjectInputStream(vendedor);
         ObjectInputStream productos = new ObjectInputStream(producto);
+        ObjectInputStream facturas = new ObjectInputStream(factura);
 
         int cantCliente = clientes.readInt();
         int cantVendedor = vendedores.readInt();
         int cantUsuarios = usuarios.readInt();
         int canProductos = productos.readInt();
+        int cantFacturas = facturas.readInt();
 
         for (int i = 0; i < cantCliente; i++) {
             misClientes.add((Clientes) clientes.readObject());
@@ -265,11 +291,15 @@ public class ClaseLogicaPrincipal {
        for (int j = 0; j < canProductos; j++) {
             misProductos.add((Producto) productos.readObject());
         }
+       for (int j = 0; j < cantFacturas; j++) {
+            misFacturas.add((Factura) facturas.readObject());
+        }
 
         cliente.close();
         vendedor.close();
         usuario.close();
         producto.close();
+        factura.close();
 
     }
 

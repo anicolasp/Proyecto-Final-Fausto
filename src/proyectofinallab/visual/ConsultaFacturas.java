@@ -11,7 +11,9 @@ import proyectofinallab.logical.ClaseLogicaPrincipal;
  * @author Anthony Tineo
  */
 public class ConsultaFacturas extends javax.swing.JFrame {
+    
     private ClaseLogicaPrincipal principal;
+    
     /**
      * Creates new form ConsultaFacturas
      */
@@ -52,22 +54,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
 
         tableFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Num_Factuta", "Id_Vendedor", "Id_Cliente", "Fecha_Factura", "Fecha_Pago", "Forma_Pago", "Valor_Factura", "Valor_Saldo_Factura", "Itbis_Factura", "Status"

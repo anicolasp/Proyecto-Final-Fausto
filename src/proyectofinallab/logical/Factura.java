@@ -17,9 +17,10 @@ public class Factura implements Serializable{
     private double itbisfactura;
     private boolean statusfactura;
 
-    public Factura(Integer numfact, Integer idvendedor, Date fechafactura, Date fechapago, boolean formapago, double valorfactura, double valorsaldofactura, double itbisfactura, boolean statusfactura) {
+    public Factura(Integer numfact, Integer idvendedor, Integer idcliente, Date fechafactura, Date fechapago, boolean formapago, double valorfactura, double valorsaldofactura, double itbisfactura, boolean statusfactura) {
         this.numfact = numfact;
         this.idvendedor = idvendedor;
+        this.idcliente = idcliente;
         this.fechafactura = fechafactura;
         this.fechapago = fechapago;
         this.formapago = formapago;
@@ -28,6 +29,8 @@ public class Factura implements Serializable{
         this.itbisfactura = itbisfactura;
         this.statusfactura = statusfactura;
     }
+
+
     
     public Integer getNumfact(){
         return numfact;

@@ -65,6 +65,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         File = new javax.swing.JMenu();
         Salir = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         Mantenimientos = new javax.swing.JMenu();
         mantusuario = new javax.swing.JMenuItem();
         mantclientes = new javax.swing.JMenuItem();
@@ -78,10 +79,9 @@ public class Menu extends javax.swing.JFrame {
         Consultas = new javax.swing.JMenu();
         consulclient = new javax.swing.JMenuItem();
         consultvend = new javax.swing.JMenuItem();
+        ConsultaDeProductos = new javax.swing.JMenuItem();
         consulfact = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -127,13 +127,21 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        Salir.setText("Salir");
+        Salir.setText("Guardar");
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
         File.add(Salir);
+
+        jMenuItem6.setText("Guardar y Salir");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        File.add(jMenuItem6);
 
         jMenuBar1.add(File);
 
@@ -210,6 +218,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(Movimientos);
 
         Consultas.setText("Consultas");
+        Consultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultasActionPerformed(evt);
+            }
+        });
 
         consulclient.setText("De Clientes");
         consulclient.addActionListener(new java.awt.event.ActionListener() {
@@ -227,28 +240,24 @@ public class Menu extends javax.swing.JFrame {
         });
         Consultas.add(consultvend);
 
+        ConsultaDeProductos.setText("De Productos");
+        ConsultaDeProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultaDeProductosActionPerformed(evt);
+            }
+        });
+        Consultas.add(ConsultaDeProductos);
+
         consulfact.setText("De Facturas");
+        consulfact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consulfactActionPerformed(evt);
+            }
+        });
         Consultas.add(consulfact);
 
-        jMenu2.setText("Cobros de facturas");
-
-        jMenuItem8.setText("Por id de cliente");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem8);
-
-        jMenuItem10.setText("Por fecha");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem10);
-
-        Consultas.add(jMenu2);
+        jMenuItem5.setText("De Cobros de Factura");
+        Consultas.add(jMenuItem5);
 
         jMenuBar1.add(Consultas);
 
@@ -287,7 +296,7 @@ public class Menu extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.exit(0);
+        
     }//GEN-LAST:event_SalirActionPerformed
 
     private void mantclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantclientesActionPerformed
@@ -309,7 +318,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mantproductosActionPerformed
 
     private void movfacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movfacturaActionPerformed
-        MovFact Info = new MovFact();
+        MovFact Info = new MovFact(this.principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_movfacturaActionPerformed
@@ -344,17 +353,31 @@ public class Menu extends javax.swing.JFrame {
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_consultvendActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        CobrosFactPorNom Info = new CobrosFactPorNom();
-        Info.setVisible(true);
-        Info.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    private void ConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultasActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        CobroFactPorFecha Info = new CobroFactPorFecha();
+    }//GEN-LAST:event_ConsultasActionPerformed
+
+    private void ConsultaDeProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultaDeProductosActionPerformed
+        ConsultaDeProductos Info = new ConsultaDeProductos(principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_ConsultaDeProductosActionPerformed
+
+    private void consulfactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consulfactActionPerformed
+        ConsultaFacturas Info = new ConsultaFacturas(principal);
+        Info.setVisible(true);
+        Info.setLocationRelativeTo(null);
+    }//GEN-LAST:event_consulfactActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        try {        
+            principal.saveData();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.exit(0);
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -429,6 +452,7 @@ public class Menu extends javax.swing.JFrame {
                
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ConsultaDeProductos;
     private javax.swing.JMenu Consultas;
     private javax.swing.JMenu File;
     private javax.swing.JMenu Mantenimientos;
@@ -439,14 +463,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem consultvend;
     private javax.swing.JMenuItem entradaproductos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
