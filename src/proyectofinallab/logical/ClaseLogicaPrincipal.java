@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import proyectofinallab.visual.MantClientes;
 
 public class ClaseLogicaPrincipal {
-    
+
     private ArrayList<Clientes> misClientes;
     private ArrayList<Usuarios> misUsuarios;
     private ArrayList<Factura> misFacturas;
@@ -23,8 +23,8 @@ public class ClaseLogicaPrincipal {
     private ArrayList<Producto> misProductos;
     private ArrayList<Cobrofactura> misCobros;
     private static ClaseLogicaPrincipal principal = null;
-    
-    public ClaseLogicaPrincipal(){
+
+    public ClaseLogicaPrincipal() {
         super();
         misClientes = new ArrayList<>();
         misUsuarios = new ArrayList<>();
@@ -33,308 +33,244 @@ public class ClaseLogicaPrincipal {
         misProductos = new ArrayList<>();
         misCobros = new ArrayList<>();
     }
-    
-    public static ClaseLogicaPrincipal getInstance(){
-        if(principal == null){
+
+    public static ClaseLogicaPrincipal getInstance() {
+        if (principal == null) {
             principal = new ClaseLogicaPrincipal();
         }
         return principal;
-        
+
     }
-    
-    
-    public ArrayList<Clientes> getMisClientes(){
+
+    public ArrayList<Clientes> getMisClientes() {
         return misClientes;
     }
-    
-    public void setMisClientes(ArrayList<Clientes> misClientes){
+
+    public void setMisClientes(ArrayList<Clientes> misClientes) {
         this.misClientes = misClientes;
     }
-    
-    public ArrayList<Usuarios> getMisUsuarios(){
+
+    public ArrayList<Usuarios> getMisUsuarios() {
         return misUsuarios;
     }
-    
-    public void setMisUsuarios(ArrayList<Usuarios> misUsuarios){
+
+    public void setMisUsuarios(ArrayList<Usuarios> misUsuarios) {
         this.misUsuarios = misUsuarios;
     }
-    
-    public ArrayList<Factura> getMisFacturas(){
+
+    public ArrayList<Factura> getMisFacturas() {
         return misFacturas;
     }
-    
-    public void setMisFacturas(ArrayList<Factura> misFacturas){
+
+    public void setMisFacturas(ArrayList<Factura> misFacturas) {
         this.misFacturas = misFacturas;
     }
-    
-    public ArrayList<Vendedor> getMisVendedores(){
+
+    public ArrayList<Vendedor> getMisVendedores() {
         return misVendedores;
     }
-    
-    public void setMisVendedores(ArrayList<Vendedor> misVendedores){
+
+    public void setMisVendedores(ArrayList<Vendedor> misVendedores) {
         this.misVendedores = misVendedores;
     }
-    
-    public ArrayList<Producto> getMisProductos(){
+
+    public ArrayList<Producto> getMisProductos() {
         return misProductos;
     }
-    
-    public void setMisProductos(ArrayList<Producto> misProductos){
+
+    public void setMisProductos(ArrayList<Producto> misProductos) {
         this.misProductos = misProductos;
     }
-    
-    public ArrayList<Cobrofactura> getMisCobros(){
+
+    public ArrayList<Cobrofactura> getMisCobros() {
         return misCobros;
     }
-    
-    public void setMisCobros(ArrayList<Cobrofactura> misCobros){
+
+    public void setMisCobros(ArrayList<Cobrofactura> misCobros) {
         this.misCobros = misCobros;
     }
-    
-    public void insertClientes (Clientes aux){
+
+    public void insertClientes(Clientes aux) {
         misClientes.add(aux);
     }
-    
-    public void insertUsuarios (Usuarios aux){
+
+    public void insertUsuarios(Usuarios aux) {
         misUsuarios.add(aux);
     }
-    
-    public void insertFactura (Factura aux){
+
+    public void insertFactura(Factura aux) {
         misFacturas.add(aux);
     }
-    
-    public void insertVendedor (Vendedor aux){
+
+    public void insertVendedor(Vendedor aux) {
         misVendedores.add(aux);
     }
-    
-    public void insertProductos (Producto aux){
+
+    public void insertProductos(Producto aux) {
         misProductos.add(aux);
     }
-    
-    public void insertCobros(Cobrofactura aux){
+
+    public void insertCobros(Cobrofactura aux) {
         misCobros.add(aux);
     }
-    
-   public Clientes clienteByID(Integer id){
+
+    public Clientes clienteByID(Integer id) {
         Clientes c = null;
         boolean encontrado = false;
         int i = 0;
-        while(!encontrado && i<misClientes.size()){
+        while (!encontrado && i < misClientes.size()) {
             for (Clientes aux : misClientes) {
-                if(aux.getIdcliente().equals(id)) {
+                if (aux.getIdcliente().equals(id)) {
                     c = aux;
                     encontrado = true;
                 }
-                        i++;
+                i++;
             }
         }
         return c;
     }
-   
-   public Usuarios usuBylogin(String login){
-       Usuarios c = null;
+
+    public Usuarios usuBylogin(String login) {
+        Usuarios c = null;
         boolean encontrado = false;
         int i = 0;
-        while(!encontrado && i<misUsuarios.size()){
+        while (!encontrado && i < misUsuarios.size()) {
             for (Usuarios aux : misUsuarios) {
-                if(aux.getLoginusu().equalsIgnoreCase(login)) {
+                if (aux.getLoginusu().equalsIgnoreCase(login)) {
                     c = aux;
                     encontrado = true;
                 }
-                        i++;
+                i++;
             }
         }
         return c;
-   }
-   
-   public Producto productoByID(String id){
+    }
+
+    public Producto productoByID(String id) {
         Producto c = null;
         boolean encontrado = false;
         int i = 0;
-        while(!encontrado && i<misProductos.size()){
+        while (!encontrado && i < misProductos.size()) {
             for (Producto aux : misProductos) {
-                if(aux.getIdproducto().equalsIgnoreCase(id)) {                
+                if (aux.getIdproducto().equalsIgnoreCase(id)) {
                     c = aux;
                     encontrado = true;
                 }
-                        i++;
+                i++;
             }
         }
         return c;
     }
-   
-   public Vendedor vendedorByID(Integer id){
+
+    public Vendedor vendedorByID(Integer id) {
         Vendedor vendedor1 = null;
         boolean encontrado = false;
         int i = 0;
-        while(!encontrado && i<misVendedores.size()){
+        while (!encontrado && i < misVendedores.size()) {
             for (Vendedor aux : misVendedores) {
-                if(aux.getIdvendedor().equals(id)) {
+                if (aux.getIdvendedor().equals(id)) {
                     vendedor1 = aux;
                     encontrado = true;
                 }
-                        i++;
+                i++;
             }
         }
         return vendedor1;
     }
-   
-   public Usuarios usuariobyNUsuario(String nombreusuario){
+
+    public Usuarios usuariobyNUsuario(String nombreusuario) {
         Usuarios c = null;
         boolean encontrado = false;
         int i = 0;
-        while(!encontrado && i<misUsuarios.size()){
+        while (!encontrado && i < misUsuarios.size()) {
             for (Usuarios aux : misUsuarios) {
-                if(aux.getLoginusu().equalsIgnoreCase(nombreusuario)) {                
+                if (aux.getLoginusu().equalsIgnoreCase(nombreusuario)) {
                     c = aux;
                     encontrado = true;
                 }
-                        i++;
+                i++;
             }
         }
         return c;
     }
-   
-   public void saveData() throws IOException {
-	
-		FileOutputStream cliente = new FileOutputStream ("Clientes.dat");
-<<<<<<< HEAD
-		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
-		FileOutputStream vendedor = new FileOutputStream ("Vendedores.dat");
-                
-||||||| merged common ancestors
-		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
-		
-=======
-		FileOutputStream usuario = new FileOutputStream ("Usuarios.dat");
-<<<<<<< HEAD
-		
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-||||||| merged common ancestors
-		
-=======
-                
->>>>>>> 8729e4670b130bd0413daec429947366dfa12425
-		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
-<<<<<<< HEAD
-                ObjectOutputStream usuario = new ObjectOutputStream(usuarios);
-                ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
-||||||| merged common ancestors
-              //  ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
-=======
-                ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		
-		
-		clientes.writeInt(misClientes.size());
-<<<<<<< HEAD
-                vendedores.writeInt(misVendedores.size());
-            //    usuarios.writeInt(misUsuarios.size());
-||||||| merged common ancestors
-            //    usuarios.writeInt(misUsuarios.size());
-=======
-                usuarios.writeInt(misUsuarios.size());
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-			
-		for (Clientes aux : misClientes) {
-                    clientes.writeObject(aux);	
-		}
-                
-<<<<<<< HEAD
-               /* for (Usuarios aux : misUsuarios) {
-                    usuarios.writeObject(aux);	
-		}*/
-||||||| merged common ancestors
-               /* for (Usuarios aux : misUsuarios) {
-			usuarios.writeObject(aux);	
-		}*/
-=======
-               for (Usuarios aux : misUsuarios) {
-			usuarios.writeObject(aux);	
-		}
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		
-		for (Vendedor aux : misVendedores) {
-                    vendedores.writeObject(aux);	
-		}
-		
-		
-		cliente.close();
-<<<<<<< HEAD
-                vendedores.close();
-              //  usuario.close();
-||||||| merged common ancestors
-              //  usuario.close();
-=======
-                usuario.close();
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		
-		
-	}
-	
-	public void loadData() throws IOException, ClassNotFoundException {
-		
-		FileInputStream cliente = new FileInputStream ("Clientes.dat");
-<<<<<<< HEAD
-		FileOutputStream vendedor = new FileOutputStream ("Vendedores.dat");
-||||||| merged common ancestors
-		
-=======
-		FileInputStream usuario = new FileInputStream ("Usuarios.dat");
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		
-		ObjectInputStream clientes = new ObjectInputStream(cliente);
-<<<<<<< HEAD
-                ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
-		
-||||||| merged common ancestors
-           
-		
-=======
-		ObjectInputStream usuarios = new ObjectInputStream(usuario);
-                
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		int cantCliente = clientes.readInt();
-<<<<<<< HEAD
-		//int cantVendedor = vendedores.readInt();
-||||||| merged common ancestors
-		
-=======
-		int cantUsuarios = usuarios.readInt();
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		
-		
-		
-		
-		for (int i = 0; i < cantCliente; i++) {
-			misClientes.add((Clientes) clientes.readObject());
-		}
-                
-                for (int i = 0; i < cantUsuarios; i++) {
-			misUsuarios.add((Usuarios) usuarios.readObject());
-		}
-		
-		/*
-                for (int j = 0; j < cantVendedor; j++) {
-			misVendedores.add((Vendedor) Vendedor.readObject());
-		}
-		*/
-                
-		cliente.close();
-<<<<<<< HEAD
-		//vendedor.close();
-||||||| merged common ancestors
-		
-=======
-                usuario.close();
-		
->>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
-		
-	}
 
-   
+    public void saveData() throws IOException {
+
+        FileOutputStream cliente = new FileOutputStream("Clientes.dat");
+        FileOutputStream usuario = new FileOutputStream("Usuarios.dat");
+        FileOutputStream vendedor = new FileOutputStream("Vendedores.dat");
+        FileOutputStream producto = new FileOutputStream("Productos.dat");
+
+        ObjectOutputStream clientes = new ObjectOutputStream(cliente);
+        ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
+        ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
+        ObjectOutputStream productos = new ObjectOutputStream(producto);
+
+        clientes.writeInt(misClientes.size());
+        usuarios.writeInt(misUsuarios.size());
+        vendedores.writeInt(misVendedores.size());
+        productos.writeInt(misProductos.size());
+
+        for (Clientes aux : misClientes) {
+            clientes.writeObject(aux);
+        }
+
+        for (Usuarios aux : misUsuarios) {
+            usuarios.writeObject(aux);
+        }
+
+        for (Vendedor aux : misVendedores) {
+            vendedores.writeObject(aux);
+        }
+        for (Producto aux : misProductos) {
+            productos.writeObject(aux);
+        }
+
+        cliente.close();
+        vendedores.close();
+        usuario.close();
+        producto.close();
+
+    }
+
+    public void loadData() throws IOException, ClassNotFoundException {
+
+        FileInputStream cliente = new FileInputStream("Clientes.dat");
+        FileInputStream usuario = new FileInputStream("Usuarios.dat");
+        FileInputStream vendedor = new FileInputStream("Vendedores.dat");
+        FileInputStream producto = new FileInputStream("Productos.dat");
+       
+        ObjectInputStream clientes = new ObjectInputStream(cliente);
+        ObjectInputStream usuarios = new ObjectInputStream(usuario);
+        ObjectInputStream vendedores = new ObjectInputStream(vendedor);
+        ObjectInputStream productos = new ObjectInputStream(producto);
+
+        int cantCliente = clientes.readInt();
+        int cantVendedor = vendedores.readInt();
+        int cantUsuarios = usuarios.readInt();
+        int canProductos = productos.readInt();
+
+        for (int i = 0; i < cantCliente; i++) {
+            misClientes.add((Clientes) clientes.readObject());
+        }
+
+        for (int i = 0; i < cantUsuarios; i++) {
+            misUsuarios.add((Usuarios) usuarios.readObject());
+        }
+
+        for (int j = 0; j < cantVendedor; j++) {
+            misVendedores.add((Vendedor) vendedores.readObject());
+        }
         
-            
-    
-    
+       for (int j = 0; j < canProductos; j++) {
+            misProductos.add((Producto) productos.readObject());
+        }
+
+        cliente.close();
+        vendedor.close();
+        usuario.close();
+        producto.close();
+
+    }
+
 }
