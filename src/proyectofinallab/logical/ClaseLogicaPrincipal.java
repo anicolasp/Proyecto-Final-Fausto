@@ -183,26 +183,32 @@ public class ClaseLogicaPrincipal {
 	
 		FileOutputStream cliente = new FileOutputStream ("Clientes.dat");
 		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
-		
+		FileOutputStream vendedor = new FileOutputStream ("Vendedores.dat");
+                
 		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
-              //  ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
+                ObjectOutputStream usuario = new ObjectOutputStream(usuarios);
+                ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
 		
 		
 		clientes.writeInt(misClientes.size());
+                vendedores.writeInt(misVendedores.size());
             //    usuarios.writeInt(misUsuarios.size());
 			
 		for (Clientes aux : misClientes) {
-			clientes.writeObject(aux);	
+                    clientes.writeObject(aux);	
 		}
                 
                /* for (Usuarios aux : misUsuarios) {
-			usuarios.writeObject(aux);	
+                    usuarios.writeObject(aux);	
 		}*/
 		
-		
+		for (Vendedor aux : misVendedores) {
+                    vendedores.writeObject(aux);	
+		}
 		
 		
 		cliente.close();
+                vendedores.close();
               //  usuario.close();
 		
 		
@@ -211,13 +217,13 @@ public class ClaseLogicaPrincipal {
 	public void loadData() throws IOException, ClassNotFoundException {
 		
 		FileInputStream cliente = new FileInputStream ("Clientes.dat");
-		
+		FileOutputStream vendedor = new FileOutputStream ("Vendedores.dat");
 		
 		ObjectInputStream clientes = new ObjectInputStream(cliente);
-           
+                ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
 		
 		int cantCliente = clientes.readInt();
-		
+		//int cantVendedor = vendedores.readInt();
 		
 		
 		
@@ -226,10 +232,14 @@ public class ClaseLogicaPrincipal {
 			misClientes.add((Clientes) clientes.readObject());
 		}
 		
-		
-		
+		/*
+                for (int j = 0; j < cantVendedor; j++) {
+			misVendedores.add((Vendedor) Vendedor.readObject());
+		}
+		*/
+                
 		cliente.close();
-		
+		//vendedor.close();
 		
 	}
 
