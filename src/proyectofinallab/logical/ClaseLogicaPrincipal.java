@@ -343,6 +343,8 @@ public class ClaseLogicaPrincipal {
        /*for (int j = 0; j < cantdetallefatura; j++) {
             misDetallesdefactura.add((Detellefatura) detallefactura.readObject());
         }*/
+       
+       //lol
 
         cliente.close();
         vendedor.close();
