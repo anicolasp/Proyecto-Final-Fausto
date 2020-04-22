@@ -1,7 +1,9 @@
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 
-public class Vendedor {
+
+public class Vendedor implements Serializable{
     
     private Integer idvendedor;
     private String nombrevendedor;

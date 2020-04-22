@@ -1,10 +1,11 @@
 
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class EntradaSalidaproducto {
+public class EntradaSalidaproducto implements Serializable{
     
     
     private Integer num_entrasal;

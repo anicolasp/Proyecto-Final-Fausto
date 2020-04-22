@@ -179,31 +179,47 @@ public class ClaseLogicaPrincipal {
         return vendedor1;
     }
    
+   public Usuarios usuariobyNUsuario(String nombreusuario){
+        Usuarios c = null;
+        boolean encontrado = false;
+        int i = 0;
+        while(!encontrado && i<misUsuarios.size()){
+            for (Usuarios aux : misUsuarios) {
+                if(aux.getLoginusu().equalsIgnoreCase(nombreusuario)) {                
+                    c = aux;
+                    encontrado = true;
+                }
+                        i++;
+            }
+        }
+        return c;
+    }
+   
    public void saveData() throws IOException {
 	
 		FileOutputStream cliente = new FileOutputStream ("Clientes.dat");
-		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
+		FileOutputStream usuario = new FileOutputStream ("Usuarios.dat");
 		
 		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
-              //  ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
+                ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
 		
 		
 		clientes.writeInt(misClientes.size());
-            //    usuarios.writeInt(misUsuarios.size());
+                usuarios.writeInt(misUsuarios.size());
 			
 		for (Clientes aux : misClientes) {
 			clientes.writeObject(aux);	
 		}
                 
-               /* for (Usuarios aux : misUsuarios) {
+               for (Usuarios aux : misUsuarios) {
 			usuarios.writeObject(aux);	
-		}*/
+		}
 		
 		
 		
 		
 		cliente.close();
-              //  usuario.close();
+                usuario.close();
 		
 		
 	}
@@ -211,13 +227,13 @@ public class ClaseLogicaPrincipal {
 	public void loadData() throws IOException, ClassNotFoundException {
 		
 		FileInputStream cliente = new FileInputStream ("Clientes.dat");
-		
+		FileInputStream usuario = new FileInputStream ("Usuarios.dat");
 		
 		ObjectInputStream clientes = new ObjectInputStream(cliente);
-           
-		
+		ObjectInputStream usuarios = new ObjectInputStream(usuario);
+                
 		int cantCliente = clientes.readInt();
-		
+		int cantUsuarios = usuarios.readInt();
 		
 		
 		
@@ -225,10 +241,15 @@ public class ClaseLogicaPrincipal {
 		for (int i = 0; i < cantCliente; i++) {
 			misClientes.add((Clientes) clientes.readObject());
 		}
+                
+                for (int i = 0; i < cantUsuarios; i++) {
+			misUsuarios.add((Usuarios) usuarios.readObject());
+		}
 		
 		
 		
 		cliente.close();
+                usuario.close();
 		
 		
 	}

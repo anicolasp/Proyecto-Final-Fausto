@@ -1,7 +1,9 @@
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 
-public class Usuarios {
+
+public class Usuarios implements Serializable{
     
     private String login_usuario;
     private String pas_usuario;

@@ -1,10 +1,11 @@
 
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
-public class Cobrofactura {
+public class Cobrofactura implements Serializable{
     
     private Integer idcobro;
     private Integer idcliente;

@@ -1,8 +1,10 @@
 
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 
-public class DetalleEntrada {
+
+public class DetalleEntrada implements Serializable{
     
     private Integer num_entrada;
     private Integer secuencia;

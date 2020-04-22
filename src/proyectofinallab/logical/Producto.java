@@ -1,7 +1,9 @@
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 
-public class Producto {
+
+public class Producto implements Serializable{
     
     private String idproducto;
     private String descripcionproducto;
