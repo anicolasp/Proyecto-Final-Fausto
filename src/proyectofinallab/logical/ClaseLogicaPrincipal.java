@@ -163,6 +163,22 @@ public class ClaseLogicaPrincipal {
         return c;
     }
    
+   public Vendedor vendedorByID(Integer id){
+        Vendedor vendedor1 = null;
+        boolean encontrado = false;
+        int i = 0;
+        while(!encontrado && i<misVendedores.size()){
+            for (Vendedor aux : misVendedores) {
+                if(aux.getIdvendedor()== id) {
+                    vendedor1 = aux;
+                    encontrado = true;
+                }
+                        i++;
+            }
+        }
+        return vendedor1;
+    }
+   
    public void saveData() throws IOException {
 	
 		FileOutputStream cliente = new FileOutputStream ("Clientes.dat");
@@ -216,6 +232,7 @@ public class ClaseLogicaPrincipal {
 		
 		
 	}
+
    
         
             
