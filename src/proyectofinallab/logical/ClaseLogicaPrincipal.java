@@ -121,7 +121,7 @@ public class ClaseLogicaPrincipal {
         int i = 0;
         while(!encontrado && i<misClientes.size()){
             for (Clientes aux : misClientes) {
-                if(aux.getIdcliente() == id) {
+                if(aux.getIdcliente().equals(id)) {
                     c = aux;
                     encontrado = true;
                 }
@@ -137,7 +137,7 @@ public class ClaseLogicaPrincipal {
         int i = 0;
         while(!encontrado && i<misUsuarios.size()){
             for (Usuarios aux : misUsuarios) {
-                if(aux.getLoginusu()== login) {
+                if(aux.getLoginusu().equalsIgnoreCase(login)) {
                     c = aux;
                     encontrado = true;
                 }
@@ -169,7 +169,7 @@ public class ClaseLogicaPrincipal {
         int i = 0;
         while(!encontrado && i<misVendedores.size()){
             for (Vendedor aux : misVendedores) {
-                if(aux.getIdvendedor()== id) {
+                if(aux.getIdvendedor().equals(id)) {
                     vendedor1 = aux;
                     encontrado = true;
                 }
@@ -207,8 +207,14 @@ public class ClaseLogicaPrincipal {
 		
 =======
 		FileOutputStream usuario = new FileOutputStream ("Usuarios.dat");
+<<<<<<< HEAD
 		
 >>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
+||||||| merged common ancestors
+		
+=======
+                
+>>>>>>> 8729e4670b130bd0413daec429947366dfa12425
 		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
 <<<<<<< HEAD
                 ObjectOutputStream usuario = new ObjectOutputStream(usuarios);

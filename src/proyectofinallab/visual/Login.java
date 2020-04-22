@@ -8,6 +8,10 @@ package proyectofinallab.visual;
 import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyectofinallab.visual.Menu;
 import proyectofinallab.visual.MantUsuario;
 import proyectofinallab.logical.Usuarios;
@@ -18,11 +22,14 @@ import proyectofinallab.logical.ClaseLogicaPrincipal;
  * @author nicol
  */
 public class Login extends javax.swing.JFrame {
+    
+    public ClaseLogicaPrincipal principal;
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(ClaseLogicaPrincipal principal) {
+        this.principal = principal;
         initComponents();
     }
 
@@ -151,24 +158,47 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        String password = contra.getText();
+     
         String username = usuario.getText();
+        String contrasena = contra.getText();
         
-        if (password.contains("final") && (username.contains("proyecto"))){
-            
+        
+        Usuarios u = principal.usuariobyNUsuario(username);
+        if(u != null){
+            if(u.getPasusu().equalsIgnoreCase(contrasena)){
             usuario.setText("");
             contra.setText("");
             systemExit();
             
-            Menu Info = new Menu();
-            Info.setVisible(true);
-            this.dispose();
+            Menu Info;
+            try {
+                Info = new Menu(principal,u);
+                Info.setVisible(true);
+                Info.setTitle("Menu");
+                Info.setLocationRelativeTo(null); //para centrar el panel
+          
+                this.dispose();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
         }
         else {
-            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto", "Login Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "Login Error",JOptionPane.ERROR_MESSAGE);
             usuario.setText("");
             contra.setText("");
         }
+            
+        }else{
+             JOptionPane.showMessageDialog(null, "Usuario no existe", "Login Error",JOptionPane.ERROR_MESSAGE);
+             usuario.setText("");
+              contra.setText("");
+            
+        }
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -203,7 +233,16 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new Login().setVisible(true);
-                Login obj = new Login ();
+                ClaseLogicaPrincipal p = ClaseLogicaPrincipal.getInstance();
+                
+                try {
+                    p.loadData();
+                } catch (IOException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                Login obj = new Login (p);
                 obj.setTitle("Login");
                 obj.setLocationRelativeTo(null); //para centrar el panel
                 obj.setVisible(true);

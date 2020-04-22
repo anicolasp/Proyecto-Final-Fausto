@@ -134,8 +134,7 @@ public class ConsultaVendedores extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-        Menu Info = new Menu();
-        Info.setVisible(true);
+     
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
