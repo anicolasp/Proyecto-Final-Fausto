@@ -250,18 +250,21 @@ public class ClaseLogicaPrincipal {
         FileOutputStream vendedor = new FileOutputStream("Vendedores.dat");
         FileOutputStream producto = new FileOutputStream("Productos.dat");
         FileOutputStream factura = new FileOutputStream("Facturas.dat");
+        //FileOutputStream detallefactura = new FileOutputStream("Detallefactura.dat");
 
         ObjectOutputStream clientes = new ObjectOutputStream(cliente);
         ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
         ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
         ObjectOutputStream productos = new ObjectOutputStream(producto);
-        ObjectOutputStream facturas = new ObjectOutputStream(factura);   
+        ObjectOutputStream facturas = new ObjectOutputStream(factura);
+        //ObjectOutputStream detallefactura = new ObjectOutputStream(detallefactura);
         
         clientes.writeInt(misClientes.size());
         usuarios.writeInt(misUsuarios.size());
         vendedores.writeInt(misVendedores.size());
         productos.writeInt(misProductos.size());
         facturas.writeInt(misFacturas.size());
+       // detallefactura.writeInt(misFacturas.size());
 
         for (Clientes aux : misClientes) {
             clientes.writeObject(aux);
@@ -280,12 +283,18 @@ public class ClaseLogicaPrincipal {
          for (Factura aux : misFacturas) {
             facturas.writeObject(aux);
         }
+         /*for (Detallefactura aux : misDetallesdefactura) {
+            facturas.writeObject(aux);
+        }*/
+         
+        
 
         cliente.close();
         vendedores.close();
         usuario.close();
         producto.close();
         factura.close();
+        //detallefactura.close();
 
     }
 
@@ -296,18 +305,21 @@ public class ClaseLogicaPrincipal {
         FileInputStream vendedor = new FileInputStream("Vendedores.dat");
         FileInputStream producto = new FileInputStream("Productos.dat");
         FileInputStream factura = new FileInputStream("Facturas.dat");
+      //  FileInputStream detallefactura = new FileInputStream("detallefaturas.dat");
        
         ObjectInputStream clientes = new ObjectInputStream(cliente);
         ObjectInputStream usuarios = new ObjectInputStream(usuario);
         ObjectInputStream vendedores = new ObjectInputStream(vendedor);
         ObjectInputStream productos = new ObjectInputStream(producto);
         ObjectInputStream facturas = new ObjectInputStream(factura);
+      //  ObjectInputStream detallefactura = new ObjectInputStream(detallefactura);
 
         int cantCliente = clientes.readInt();
         int cantVendedor = vendedores.readInt();
         int cantUsuarios = usuarios.readInt();
         int canProductos = productos.readInt();
         int cantFacturas = facturas.readInt();
+       // int cantFacturas = detallefactura.readInt();
 
         for (int i = 0; i < cantCliente; i++) {
             misClientes.add((Clientes) clientes.readObject());
@@ -327,12 +339,17 @@ public class ClaseLogicaPrincipal {
        for (int j = 0; j < cantFacturas; j++) {
             misFacturas.add((Factura) facturas.readObject());
         }
+       
+       /*for (int j = 0; j < cantdetallefatura; j++) {
+            misDetallesdefactura.add((Detellefatura) detallefactura.readObject());
+        }*/
 
         cliente.close();
         vendedor.close();
         usuario.close();
         producto.close();
         factura.close();
+       // detallefactura.close();
 
     }
 
