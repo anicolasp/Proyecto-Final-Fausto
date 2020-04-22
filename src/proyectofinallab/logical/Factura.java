@@ -16,8 +16,19 @@ public class Factura implements Serializable{
     private double valorsaldofactura;
     private double itbisfactura;
     private boolean statusfactura;
+    
+    /*
+    private Integer secuencia;
+    private String idproducto;
+    private float cantidad;
+    
+    private Integer idcobro;
+    
+    */
 
-    public Factura(Integer numfact, Integer idvendedor, Integer idcliente, Date fechafactura, Date fechapago, boolean formapago, double valorfactura, double valorsaldofactura, double itbisfactura, boolean statusfactura) {
+    public Factura(Integer numfact, Integer idvendedor, Integer idcliente, Date fechafactura,
+            Date fechapago, boolean formapago, double valorfactura, double valorsaldofactura,
+            double itbisfactura, boolean statusfactura/*Integer secuencia, String idproducto, float cantidad, Integer idcobro*/) {
         this.numfact = numfact;
         this.idvendedor = idvendedor;
         this.idcliente = idcliente;
@@ -28,6 +39,14 @@ public class Factura implements Serializable{
         this.valorsaldofactura = valorsaldofactura;
         this.itbisfactura = itbisfactura;
         this.statusfactura = statusfactura;
+        
+        /*
+        this.secuencia = secuencia;
+        this.idproducto = idproducto;
+        this.cantidad = cantidad;
+        
+        this.idcobro = idcobro;
+        */
     }
 
 
@@ -111,5 +130,39 @@ public class Factura implements Serializable{
     public void setStatusfactura(boolean statusfactura){
         this.statusfactura = statusfactura;
     }
+    
+    /*
+    public Integer getSecuencia(){
+        return secuencia;
+    }
+    
+    public void setSecuencia(Integer secuencia){
+        this.secuencia = secuencia;
+    }
+    
+    public String getIdproducto(){
+        return idproducto;
+    }
+    
+    public void setIdproducto(String idproducto){
+        this.idproducto = idproducto;
+    }
+    
+    public float getCantidad(){
+        return cantidad;
+    }
+    
+    public void setCantidad(float cantidad){
+        this.cantidad = cantidad;
+    }
+    
+    public Integer getIdcobro(){
+        return idcobro;
+    }
+    
+    public void setIdcobro(Integer idcobro){
+        this.idcobro = idcobro;
+    }
+    */
     
 }

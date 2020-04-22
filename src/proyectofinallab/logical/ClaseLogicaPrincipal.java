@@ -22,6 +22,7 @@ public class ClaseLogicaPrincipal {
     private ArrayList<Vendedor> misVendedores;
     private ArrayList<Producto> misProductos;
     private ArrayList<Cobrofactura> misCobros;
+    private ArrayList<Detallefactura> misDetallesdefactura;
     private static ClaseLogicaPrincipal principal = null;
 
     public ClaseLogicaPrincipal() {
@@ -32,6 +33,7 @@ public class ClaseLogicaPrincipal {
         misVendedores = new ArrayList<>();
         misProductos = new ArrayList<>();
         misCobros = new ArrayList<>();
+        misDetallesdefactura = new ArrayList<>();
     }
 
     public static ClaseLogicaPrincipal getInstance() {
@@ -41,6 +43,15 @@ public class ClaseLogicaPrincipal {
         return principal;
 
     }
+
+    public ArrayList<Detallefactura> getMisDetallesdefactura() {
+        return misDetallesdefactura;
+    }
+
+    public void setMisDetallesdefactura(ArrayList<Detallefactura> misDetallesdefactura) {
+        this.misDetallesdefactura = misDetallesdefactura;
+    }
+    
 
     public ArrayList<Clientes> getMisClientes() {
         return misClientes;
@@ -113,6 +124,10 @@ public class ClaseLogicaPrincipal {
     public void insertCobros(Cobrofactura aux) {
         misCobros.add(aux);
     }
+    
+    public void insertDetalleDeFatura(Detallefactura aux){
+        misDetallesdefactura.add(aux);
+    }
 
     public Clientes clienteByID(Integer id) {
         Clientes c = null;
@@ -146,6 +161,8 @@ public class ClaseLogicaPrincipal {
         return c;
     }
 
+
+    
     public Producto productoByID(String id) {
         Producto c = null;
         boolean encontrado = false;
@@ -153,6 +170,22 @@ public class ClaseLogicaPrincipal {
         while (!encontrado && i < misProductos.size()) {
             for (Producto aux : misProductos) {
                 if (aux.getIdproducto().equalsIgnoreCase(id)) {
+                    c = aux;
+                    encontrado = true;
+                }
+                i++;
+            }
+        }
+        return c;
+    }
+    
+    public Detallefactura detalledefacturapornum(Integer id) {
+        Detallefactura c = null;
+        boolean encontrado = false;
+        int i = 0;
+        while (!encontrado && i < misDetallesdefactura.size()) {
+            for (Detallefactura aux : misDetallesdefactura) {
+                if (aux.getNumfact().equals(id)) {
                     c = aux;
                     encontrado = true;
                 }

@@ -16,6 +16,7 @@ import proyectofinallab.logical.Factura;
 import javax.swing.JOptionPane;
 import proyectofinallab.logical.ClaseLogicaPrincipal;
 import proyectofinallab.logical.Clientes;
+import proyectofinallab.logical.Detallefactura;
 import proyectofinallab.logical.Producto;
 import proyectofinallab.logical.Vendedor;
 
@@ -501,6 +502,8 @@ public class MovFact extends javax.swing.JFrame {
         idproducto.setText("");
         descripcionproducto.setText("");
         existenciaproducto.setText("");
+        cantidad.setText("");
+        total.setText("");
         
     }
     
@@ -584,11 +587,29 @@ public class MovFact extends javax.swing.JFrame {
               
                Factura f = new Factura(idfactura,idvendedor,idcliente,fechafactura,fechapago,formapago,total,valorsaldo,itbis,status);
                principal.insertFactura(f);
+               Detallefactura s = new Detallefactura(idfactura, 0001, p.getIdproducto(), Float.valueOf(cantidad.getText()), p.getPrecioproducto());
+               principal.insertDetalleDeFatura(s);
                limpiar();
                JOptionPane.showMessageDialog(null, "La factura fue generada correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 
             }else{
                 valorsaldo.setEditable(false);
+                Factura f = principal.facturaporNumdeFact(Integer.valueOf(numfact.toString()));
+                String fechafact = this.fechafact.getText();
+                Date date12;
+                try {
+                    date12 = new SimpleDateFormat("dd/MM/yyyy").parse(fechafact);
+                    f.setFechafactura(date12);
+                } catch (ParseException ex) {
+                    Logger.getLogger(MovFact.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                f.setValorfactura(Double.valueOf(valorfact.getText()));
+                f.setValorsaldofactura(Double.valueOf(valorsaldo.getText()));
+                f.setItbisfactura(Double.valueOf(ITBIS.getText()));
+                f.setValorfactura(Double.valueOf(total.toString()));
+                f.setIdvendedor(Integer.valueOf(idvend.getText()));
+                f.setIdcliente(Integer.valueOf(idCliente.getText()));
+                
                 
                 
             }
@@ -684,13 +705,39 @@ public class MovFact extends javax.swing.JFrame {
         Factura c = principal.facturaporNumdeFact(id);
          if (c == null) {
             mensaje.setText("Creando");
+            limpiar();
             
             
              
         } else {
             mensaje.setText("Modificando");
             valorsaldo.setEditable(false);
-           
+            numfact.setText(String.valueOf(c.getNumfact()));
+            fechafact.setText(String.valueOf(c.getFechafactura()));
+            valorfact.setText(Double.toString(c.getValorfactura()));
+            valorsaldo.setText(Double.toString(c.getValorsaldofactura()));
+            ITBIS.setText(Double.toString(c.getIbisfactura()));
+            total.setText(Double.toString(c.getValorfactura()));
+            idCliente.setText(c.getIdcliente().toString());
+            idvend.setText(Integer.valueOf(c.getIdvendedor()).toString());
+            
+            
+            Clientes cli = principal.clienteByID(c.getIdcliente());
+            nombrecliente.setText(cli.getNombrecliente());
+            apellidocliente.setText(cli.getApellidoscliente());
+            limitecredito.setText(Double.valueOf(cli.getLimiteCredito()).toString());
+            
+            Vendedor vend = principal.vendedorByID(c.getIdvendedor());
+            nomvendedor.setText(vend.getNombrevendedor());
+            apellidovendedor.setText(vend.getApellidosvendedor());
+            porcentajeventa.setText(Double.valueOf(vend.getPorcentajeventa()).toString());
+            
+            Detallefactura lol = principal.detalledefacturapornum(Integer.valueOf(numfact.getText()));
+            idproducto.setText(lol.getIdproducto());
+            
+            Producto p = principal.productoByID(idproducto.getText());
+            descripcionproducto.setText(p.getDescripcionproducto());
+            existenciaproducto.setText(Float.valueOf(p.getExistenciaproducto()).toString());
             
         }
         
