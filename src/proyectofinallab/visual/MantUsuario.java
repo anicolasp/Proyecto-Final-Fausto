@@ -17,6 +17,7 @@ public class MantUsuario extends javax.swing.JFrame {
         this.principal = principal;
         System.out.print(usuario.getLoginusu());
         
+        
         initComponents();
         if(usuario.getNivelac() == 0){
             registrar.setEnabled(true);

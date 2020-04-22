@@ -1,7 +1,9 @@
 package proyectofinallab.logical;
 
+import java.io.Serializable;
 
-public class Detallefactura {
+
+public class Detallefactura implements Serializable{
     
     private Integer numfact;
     private Integer secuencia;

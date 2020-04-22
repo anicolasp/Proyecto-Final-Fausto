@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectofinallab.logical.ClaseLogicaPrincipal;
 import proyectofinallab.logical.Clientes;
+import proyectofinallab.logical.Usuarios;
 
 
 
@@ -29,6 +30,10 @@ public class MantClientes extends javax.swing.JFrame {
      */
     public MantClientes(ClaseLogicaPrincipal principal) {
         this.principal = principal;
+        Usuarios u = new Usuarios("admin", "1234", 0, "Administrador", "Administrador", "admin@gmail.com");
+     
+       this.principal.insertUsuarios(u);
+        
         initComponents();
     }
 

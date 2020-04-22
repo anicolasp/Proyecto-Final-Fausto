@@ -179,28 +179,74 @@ public class ClaseLogicaPrincipal {
         return vendedor1;
     }
    
+   public Usuarios usuariobyNUsuario(String nombreusuario){
+        Usuarios c = null;
+        boolean encontrado = false;
+        int i = 0;
+        while(!encontrado && i<misUsuarios.size()){
+            for (Usuarios aux : misUsuarios) {
+                if(aux.getLoginusu().equalsIgnoreCase(nombreusuario)) {                
+                    c = aux;
+                    encontrado = true;
+                }
+                        i++;
+            }
+        }
+        return c;
+    }
+   
    public void saveData() throws IOException {
 	
 		FileOutputStream cliente = new FileOutputStream ("Clientes.dat");
+<<<<<<< HEAD
 		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
 		FileOutputStream vendedor = new FileOutputStream ("Vendedores.dat");
                 
+||||||| merged common ancestors
+		FileOutputStream usuarios = new FileOutputStream ("Usuarios.dat");
+		
+=======
+		FileOutputStream usuario = new FileOutputStream ("Usuarios.dat");
+		
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		ObjectOutputStream clientes = new ObjectOutputStream(cliente);
+<<<<<<< HEAD
                 ObjectOutputStream usuario = new ObjectOutputStream(usuarios);
                 ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
+||||||| merged common ancestors
+              //  ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
+=======
+                ObjectOutputStream usuarios = new ObjectOutputStream(usuario);
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		
 		
 		clientes.writeInt(misClientes.size());
+<<<<<<< HEAD
                 vendedores.writeInt(misVendedores.size());
             //    usuarios.writeInt(misUsuarios.size());
+||||||| merged common ancestors
+            //    usuarios.writeInt(misUsuarios.size());
+=======
+                usuarios.writeInt(misUsuarios.size());
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 			
 		for (Clientes aux : misClientes) {
                     clientes.writeObject(aux);	
 		}
                 
+<<<<<<< HEAD
                /* for (Usuarios aux : misUsuarios) {
                     usuarios.writeObject(aux);	
 		}*/
+||||||| merged common ancestors
+               /* for (Usuarios aux : misUsuarios) {
+			usuarios.writeObject(aux);	
+		}*/
+=======
+               for (Usuarios aux : misUsuarios) {
+			usuarios.writeObject(aux);	
+		}
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		
 		for (Vendedor aux : misVendedores) {
                     vendedores.writeObject(aux);	
@@ -208,8 +254,14 @@ public class ClaseLogicaPrincipal {
 		
 		
 		cliente.close();
+<<<<<<< HEAD
                 vendedores.close();
               //  usuario.close();
+||||||| merged common ancestors
+              //  usuario.close();
+=======
+                usuario.close();
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		
 		
 	}
@@ -217,19 +269,43 @@ public class ClaseLogicaPrincipal {
 	public void loadData() throws IOException, ClassNotFoundException {
 		
 		FileInputStream cliente = new FileInputStream ("Clientes.dat");
+<<<<<<< HEAD
 		FileOutputStream vendedor = new FileOutputStream ("Vendedores.dat");
+||||||| merged common ancestors
+		
+=======
+		FileInputStream usuario = new FileInputStream ("Usuarios.dat");
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		
 		ObjectInputStream clientes = new ObjectInputStream(cliente);
+<<<<<<< HEAD
                 ObjectOutputStream vendedores = new ObjectOutputStream(vendedor);
 		
+||||||| merged common ancestors
+           
+		
+=======
+		ObjectInputStream usuarios = new ObjectInputStream(usuario);
+                
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		int cantCliente = clientes.readInt();
+<<<<<<< HEAD
 		//int cantVendedor = vendedores.readInt();
+||||||| merged common ancestors
+		
+=======
+		int cantUsuarios = usuarios.readInt();
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		
 		
 		
 		
 		for (int i = 0; i < cantCliente; i++) {
 			misClientes.add((Clientes) clientes.readObject());
+		}
+                
+                for (int i = 0; i < cantUsuarios; i++) {
+			misUsuarios.add((Usuarios) usuarios.readObject());
 		}
 		
 		/*
@@ -239,7 +315,14 @@ public class ClaseLogicaPrincipal {
 		*/
                 
 		cliente.close();
+<<<<<<< HEAD
 		//vendedor.close();
+||||||| merged common ancestors
+		
+=======
+                usuario.close();
+		
+>>>>>>> 2db526352b5e9a975c87dfe930f7efbe1e2af24a
 		
 	}
 

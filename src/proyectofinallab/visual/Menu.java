@@ -29,12 +29,9 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu(ClaseLogicaPrincipal p) throws IOException, ClassNotFoundException {
-        ClaseLogicaPrincipal pr = ClaseLogicaPrincipal.getInstance();
-        this.principal = pr;
+        this.principal = p;
     
-        Usuarios u = new Usuarios("admin", "admin", 0, "admin", "admine", "admin@admin.com");
-        this.u = u;
-        principal.insertUsuarios(u);
+        
         
        // this.principal.loadData();
     
@@ -289,7 +286,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mantclientesActionPerformed
 
     private void mantvendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mantvendedorActionPerformed
-        MantDeVendedor Info = new MantDeVendedor();
+        MantDeVendedor Info = new MantDeVendedor(this.principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_mantvendedorActionPerformed
@@ -382,9 +379,24 @@ public class Menu extends javax.swing.JFrame {
                 //new Menu().setVisible(true);
       
                 ClaseLogicaPrincipal p = ClaseLogicaPrincipal.getInstance();
+                
                 Menu obj = null;
                 try {
                     obj = new Menu (p);
+                    //p.loadData();
+                    obj.addWindowListener(new WindowAdapter() {
+                    public void windowClosing(WindowEvent e){
+                        try{
+                            p.saveData();
+                        }catch (IOException e1){
+                            e1.printStackTrace();
+                            
+                        }
+                        System.exit(0);
+                    
+                    }
+                });
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
@@ -393,13 +405,20 @@ public class Menu extends javax.swing.JFrame {
                 obj.setTitle("Menu");
                 obj.setLocationRelativeTo(null); //para centrar el panel
                 obj.setVisible(true);
-               
+                
+                
+                
+        
+                
+             
               
                 
                 
             }
         });
     }
+  
+               
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Consultas;
