@@ -46,6 +46,11 @@ public class CobroFactPorFecha extends javax.swing.JFrame {
         buscar.setText("Buscar");
 
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +122,17 @@ public class CobroFactPorFecha extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    public void limpiar(){
         facts.setText("");
         fechafact.setText("");
-    }//GEN-LAST:event_limpiarActionPerformed
+    }
+    
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments

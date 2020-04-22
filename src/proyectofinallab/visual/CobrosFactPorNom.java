@@ -127,10 +127,14 @@ public class CobrosFactPorNom extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
-        facts.setText("");
-        idclient.setText("");
+        limpiar();
     }//GEN-LAST:event_limpiarActionPerformed
 
+    public void limpiar(){
+        facts.setText("");
+        idclient.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */

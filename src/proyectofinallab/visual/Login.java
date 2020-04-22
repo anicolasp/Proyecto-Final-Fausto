@@ -9,6 +9,9 @@ import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import proyectofinallab.visual.Menu;
+import proyectofinallab.visual.MantUsuario;
+import proyectofinallab.logical.Usuarios;
+import proyectofinallab.logical.ClaseLogicaPrincipal;
 
 /**
  *

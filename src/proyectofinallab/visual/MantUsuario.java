@@ -266,6 +266,7 @@ public class MantUsuario extends javax.swing.JFrame {
 
     private void loginusuKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginusuKeyReleased
 
+        //int i = String.valueOf(loginusu.getText());
        buscar(loginusu.getText());
     }//GEN-LAST:event_loginusuKeyReleased
 
@@ -275,6 +276,7 @@ public class MantUsuario extends javax.swing.JFrame {
         nivelacc.setText("");
         nomusu.setText("");
         apellidosusu.setText("");
+        mensaje.setText("");
     }
     
     /**

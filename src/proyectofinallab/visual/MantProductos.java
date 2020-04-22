@@ -51,6 +51,8 @@ public class MantProductos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        mensaje.setEditable(false);
+
         jLabel1.setText("Codigo del producto:");
 
         codpro.addKeyListener(new java.awt.event.KeyAdapter() {
