@@ -16,8 +16,6 @@ public class MantUsuario extends javax.swing.JFrame {
     public MantUsuario(ClaseLogicaPrincipal principal, Usuarios usuario) {
         this.principal = principal;
         System.out.print(usuario.getLoginusu());
-        
-        
         initComponents();
         if(usuario.getNivelac() == 0){
             registrar.setEnabled(true);
@@ -279,6 +277,8 @@ public class MantUsuario extends javax.swing.JFrame {
         nomusu.setText("");
         apellidosusu.setText("");
         mensaje.setText("");
+        emailusu.setText("");
+        registrar.setVisible(true);
     }
     
     /**

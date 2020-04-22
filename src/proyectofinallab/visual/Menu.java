@@ -28,9 +28,9 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu(ClaseLogicaPrincipal p) throws IOException, ClassNotFoundException {
+    public Menu(ClaseLogicaPrincipal p, Usuarios usuario) throws IOException, ClassNotFoundException {
         this.principal = p;
-    
+        this.u = usuario;
         
         
        // this.principal.loadData();
@@ -57,6 +57,8 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jPopupMenu3 = new javax.swing.JPopupMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -86,6 +88,10 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         jMenuItem9.setText("jMenuItem9");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -276,6 +282,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_mantusuarioActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        try {
+            principal.saveData();
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
@@ -328,7 +339,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_consulclientActionPerformed
 
     private void consultvendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultvendActionPerformed
-        MantDeVendedor Info = new MantDeVendedor();
+        ConsultaVendedores Info = new ConsultaVendedores(principal);
         Info.setVisible(true);
         Info.setLocationRelativeTo(null);
     }//GEN-LAST:event_consultvendActionPerformed
@@ -381,9 +392,12 @@ public class Menu extends javax.swing.JFrame {
                 ClaseLogicaPrincipal p = ClaseLogicaPrincipal.getInstance();
                 
                 Menu obj = null;
-                try {
-                    obj = new Menu (p);
-                    //p.loadData();
+                obj.setTitle("Menu");
+                obj.setLocationRelativeTo(null); //para centrar el panel
+                obj.setVisible(true);
+             
+                   
+                 
                     obj.addWindowListener(new WindowAdapter() {
                     public void windowClosing(WindowEvent e){
                         try{
@@ -397,14 +411,8 @@ public class Menu extends javax.swing.JFrame {
                     }
                 });
                     
-                } catch (IOException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                obj.setTitle("Menu");
-                obj.setLocationRelativeTo(null); //para centrar el panel
-                obj.setVisible(true);
+            
+                
                 
                 
                 
@@ -436,6 +444,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
