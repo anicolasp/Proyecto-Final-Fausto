@@ -254,7 +254,7 @@ public class MantProductos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Producto guardado correctamente", "Información", JOptionPane.INFORMATION_MESSAGE);
                 limpiar();
                 System.out.print(principal.getMisProductos().size());
-            }else {
+            }else if(mensaje.getText().equalsIgnoreCase("Modificando")){
        
                 Producto aux = principal.productoByID(codpro.getText());
                 aux.setDescripcionproducto(descr.getText());

@@ -267,11 +267,13 @@ public class MantDeVendedor extends javax.swing.JFrame {
                 limpiar_mantVendedor();
                 System.out.print(principal.getMisVendedores().size());
                 
-            }else{
+            }else if(mensaje.getText().equalsIgnoreCase("Modificando")){
                 Vendedor aux = principal.vendedorByID(Integer.valueOf(idvend.getText()));
                 aux.setNombrevendedor(nombres.getText());
                 aux.setApellidosvendedor(apellidos.getText());
                 aux.setPorcentajeventa(Double.valueOf(porvent.getText()));
+                JOptionPane.showMessageDialog(null, "El cliente se modifico", "Información", JOptionPane.INFORMATION_MESSAGE);
+                limpiar_mantVendedor();
                 
             }
         }

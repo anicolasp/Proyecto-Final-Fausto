@@ -591,7 +591,7 @@ public class MovFact extends javax.swing.JFrame {
                limpiar();
                JOptionPane.showMessageDialog(null, "La factura fue generada correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 
-            }else{
+            }else if(mensaje.getText().equalsIgnoreCase("Modificando")){
                 valorsaldo.setEditable(true);
                 Factura f = principal.facturaporNumdeFact(Integer.valueOf(numfact.toString()));
                 String fechafact = this.fechafact.getText();
@@ -608,6 +608,8 @@ public class MovFact extends javax.swing.JFrame {
                 f.setValorfactura(Double.valueOf(total.toString()));
                 f.setIdvendedor(Integer.valueOf(idvend.getText()));
                 f.setIdcliente(Integer.valueOf(idCliente.getText()));
+                JOptionPane.showMessageDialog(null, "El cliente se modifico", "Información", JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
                 
                 
                 

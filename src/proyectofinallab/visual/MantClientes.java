@@ -64,9 +64,9 @@ public class MantClientes extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         limcred = new javax.swing.JTextField();
         guardar = new javax.swing.JButton();
-        limpiar = new javax.swing.JButton();
-        salir = new javax.swing.JButton();
         catclient = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,17 +118,17 @@ public class MantClientes extends javax.swing.JFrame {
             }
         });
 
-        limpiar.setText("Limpiar");
-        limpiar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limpiarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        salir.setText("Salir");
-        salir.addActionListener(new java.awt.event.ActionListener() {
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirActionPerformed(evt);
+                SalirActionPerformed(evt);
             }
         });
 
@@ -157,15 +157,8 @@ public class MantClientes extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(limcred, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(codclient, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nombres)
                                     .addComponent(apellidos)
@@ -177,12 +170,22 @@ public class MantClientes extends javax.swing.JFrame {
                                         .addComponent(telefono, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                                     .addComponent(direccion)
                                     .addComponent(correo))
-                                .addComponent(catclient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(catclient, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(82, 82, 82)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(limcred, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
-                        .addComponent(limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -229,8 +232,8 @@ public class MantClientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardar)
-                    .addComponent(limpiar)
-                    .addComponent(salir))
+                    .addComponent(jButton1)
+                    .addComponent(Salir))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -249,15 +252,7 @@ public class MantClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    
-    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_salirActionPerformed
-
-    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
-       limpiar();
-    }//GEN-LAST:event_limpiarActionPerformed
-    
+        
     public void limpiar(){
         apellidos.setText("");
         balance.setText("");
@@ -296,7 +291,7 @@ public class MantClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Todavia hay campos obligatorios vacios");
         }
         else{
-              if(mensaje.getText().equals("Creando")){
+              if(mensaje.getText().equalsIgnoreCase("Creando")){
                 Integer id = Integer.valueOf(codclient.getText());
                 String nombre = nombres.getText();
                 String apellido = apellidos.getText();
@@ -321,7 +316,7 @@ public class MantClientes extends javax.swing.JFrame {
                 } catch (ParseException ex) {
                     Logger.getLogger(MantClientes.class.getName()).log(Level.SEVERE, null, ex);
                 }
-              }else{
+              }else if(mensaje.getText().equalsIgnoreCase("Modificando")){
                    
                 Clientes aux = principal.clienteByID(Integer.valueOf(codclient.getText()));
                 aux.setNombrecliente(nombres.getText());
@@ -339,6 +334,8 @@ public class MantClientes extends javax.swing.JFrame {
                 aux.setCorreocliente(correo.getText());
                 aux.setCategoriacliente(Integer.valueOf(catclient.getText()));
                 aux.setLimiteCredito(Double.valueOf(limcred.getText()));
+                JOptionPane.showMessageDialog(null, "El cliente se modifico", "Información", JOptionPane.INFORMATION_MESSAGE);
+                limpiar();
 
         
             
@@ -367,6 +364,16 @@ public class MantClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mensajeActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    limpiar();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+
+        dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_SalirActionPerformed
+
     private void buscar(Integer id){
         Clientes c = principal.clienteByID(id);
         
@@ -393,6 +400,7 @@ public class MantClientes extends javax.swing.JFrame {
             catclient.setText(String.valueOf(c.getCategoriacliente()));
             limcred.setText(String.valueOf(c.getLimiteCredito()));
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            balance.setText(Double.valueOf(c.getBalancecliente()).toString());
             fechanac.setText(sdf.format(c.getFechaNaci()));
             
         }
@@ -435,6 +443,7 @@ public class MantClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
     private javax.swing.JTextField apellidos;
     private javax.swing.JTextField balance;
     private javax.swing.JTextField catclient;
@@ -443,6 +452,7 @@ public class MantClientes extends javax.swing.JFrame {
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField fechanac;
     private javax.swing.JButton guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -455,10 +465,8 @@ public class MantClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField limcred;
-    private javax.swing.JButton limpiar;
     private javax.swing.JTextField mensaje;
     private javax.swing.JTextField nombres;
-    private javax.swing.JButton salir;
     private javax.swing.JTextField telefono;
     // End of variables declaration//GEN-END:variables
 }

@@ -140,8 +140,8 @@
                     <Column editable="false" title="Forma_Pago" type="java.lang.Boolean"/>
                     <Column editable="false" title="Valor_Factura" type="java.lang.Double"/>
                     <Column editable="false" title="Valor_Saldo_Factura" type="java.lang.Double"/>
-                    <Column editable="true" title="Itbis_Factura" type="java.lang.Double"/>
-                    <Column editable="true" title="Status" type="java.lang.Boolean"/>
+                    <Column editable="false" title="Itbis_Factura" type="java.lang.Double"/>
+                    <Column editable="false" title="Status" type="java.lang.Boolean"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

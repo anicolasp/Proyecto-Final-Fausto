@@ -220,7 +220,7 @@ public class MantUsuario extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Operación satisfactoria", "Información", JOptionPane.INFORMATION_MESSAGE);
                     limpiar();
                     System.out.print(principal.getMisUsuarios().size());
-                }else {
+                }else if(mensaje.getText().equalsIgnoreCase("Modificando")){
                     
                     Usuarios aux = principal.usuBylogin(loginusu.getText());
                     aux.setPasusu(passusu.getText());
@@ -228,6 +228,8 @@ public class MantUsuario extends javax.swing.JFrame {
                     aux.setNombreusu(nomusu.getText());
                     aux.setApellidousu(apellidosusu.getText());
                     aux.setEmailusu(emailusu.getText());
+                    JOptionPane.showMessageDialog(null, "El cliente se modifico", "Información", JOptionPane.INFORMATION_MESSAGE);
+                    limpiar();
                     
                 }
                 
