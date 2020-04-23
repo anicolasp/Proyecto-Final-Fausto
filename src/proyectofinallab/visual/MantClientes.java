@@ -109,6 +109,8 @@ public class MantClientes extends javax.swing.JFrame {
 
         jLabel9.setText("Balance:");
 
+        balance.setEditable(false);
+
         jLabel10.setText("Limite de credito:");
 
         guardar.setText("Guardar");
