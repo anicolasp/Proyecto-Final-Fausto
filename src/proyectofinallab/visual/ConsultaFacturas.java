@@ -16,6 +16,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
     
     /**
      * Creates new form ConsultaFacturas
+     * @param principal
      */
     public ConsultaFacturas(ClaseLogicaPrincipal principal) {
         this.principal = principal;
@@ -33,6 +34,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableFacturas = new javax.swing.JTable();
@@ -83,6 +85,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("Buscar por:");
 
+        buttonGroup1.add(numFactura);
         numFactura.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         numFactura.setText("Factura #");
         numFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +100,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jRadioButton2.setText("Rango Factura");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -135,28 +139,27 @@ public class ConsultaFacturas extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1)
-                        .addGap(49, 49, 49))
+                        .addComponent(numFactura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRango1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDe))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(numFactura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNumFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRango1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDe))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblHasta)
-                            .addComponent(txtRango2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(200, 200, 200))))
+                            .addComponent(txtRango2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jToggleButton1)))
+                .addGap(49, 49, 49))
             .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
@@ -225,6 +228,8 @@ public class ConsultaFacturas extends javax.swing.JFrame {
         lblHasta.setEnabled(true);     
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
+    
+    
     private void txtNumFacturaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumFacturaKeyReleased
         // TODO add your handling code here:
         Integer s = Integer.valueOf(txtNumFactura.getText());
@@ -283,7 +288,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
             Integer id_Cliente = principal.getMisFacturas().get(i).getIdcliente();
             String fecha_Factura = principal.getMisFacturas().get(i).getFechafactura().toString();
             String fecha_Pago = principal.getMisFacturas().get(i).getFechapago().toString();
-            Boolean forma_Pago = principal.getMisFacturas().get(i).getFormapago();
+           Boolean forma_Pago = principal.getMisFacturas().get(i).getFormapago();
             Double valor_Factura = principal.getMisFacturas().get(i).getValorfactura();
             Double valor_Saldo_Factura = principal.getMisFacturas().get(i).getValorsaldofactura();
             Double itbis_Factura = principal.getMisFacturas().get(i).getIbisfactura();
@@ -349,6 +354,7 @@ public class ConsultaFacturas extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;

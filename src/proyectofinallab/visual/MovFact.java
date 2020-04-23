@@ -481,6 +481,7 @@ public class MovFact extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limpiar();
         numfact.setText("");
+        mensaje.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void limpiar (){
@@ -490,8 +491,7 @@ public class MovFact extends javax.swing.JFrame {
         buttonGroup1.clearSelection();
         buttonGroup2.clearSelection();
         idvend.setText("");
-        idCliente.setText("");
-        mensaje.setText("");  
+        idCliente.setText("");  
         valorfact.setText("");
         valorsaldo.setText("");
         apellidovendedor.setText("");
@@ -515,7 +515,6 @@ public class MovFact extends javax.swing.JFrame {
         if (idvend.getText().equals("")){cont++; }
         if (idCliente.getText().equals("")){cont++; }
         if (fechafact.getText().equals("")){cont++; }
-        //if (formapago.getText().equals("")){cont++; }
          
 
     }
@@ -593,7 +592,7 @@ public class MovFact extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(null, "La factura fue generada correctamente", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 
             }else{
-                valorsaldo.setEditable(false);
+                valorsaldo.setEditable(true);
                 Factura f = principal.facturaporNumdeFact(Integer.valueOf(numfact.toString()));
                 String fechafact = this.fechafact.getText();
                 Date date12;
@@ -637,8 +636,8 @@ public class MovFact extends javax.swing.JFrame {
             apellidovendedor.setText(v.getApellidosvendedor());
             porcentajeventa.setText(Double.valueOf(v.getPorcentajeventa()).toString());   
         }else{
-             JOptionPane.showMessageDialog(null, "El vendedor no existe", "Error", JOptionPane.ERROR_MESSAGE);
-              idvend.setText("");
+            JOptionPane.showMessageDialog(null, "El vendedor no existe", "Error", JOptionPane.ERROR_MESSAGE);
+            idvend.setText("");
             nomvendedor.setText("");
             apellidovendedor.setText("");
             porcentajeventa.setText("");
@@ -711,7 +710,7 @@ public class MovFact extends javax.swing.JFrame {
              
         } else {
             mensaje.setText("Modificando");
-            valorsaldo.setEditable(false);
+            valorsaldo.setEditable(true);
             numfact.setText(String.valueOf(c.getNumfact()));
             fechafact.setText(String.valueOf(c.getFechafactura()));
             valorfact.setText(Double.toString(c.getValorfactura()));

@@ -81,7 +81,6 @@ public class Menu extends javax.swing.JFrame {
         consultvend = new javax.swing.JMenuItem();
         ConsultaDeProductos = new javax.swing.JMenuItem();
         consulfact = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -120,7 +119,6 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jMenuBar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenuBar1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
 
         File.setText("File");
         File.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +128,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         Salir.setText("Guardar");
-        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
@@ -139,7 +137,7 @@ public class Menu extends javax.swing.JFrame {
         File.add(Salir);
 
         jMenuItem6.setText("Guardar y Salir");
-        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -152,7 +150,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.setText("Mantenimientos");
 
         mantusuario.setText("De Usuario");
-        mantusuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mantusuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mantusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantusuarioActionPerformed(evt);
@@ -161,7 +159,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.add(mantusuario);
 
         mantclientes.setText("De Clientes");
-        mantclientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mantclientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mantclientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantclientesActionPerformed(evt);
@@ -170,7 +168,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.add(mantclientes);
 
         mantvendedor.setText("De Vendedor");
-        mantvendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mantvendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mantvendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantvendedorActionPerformed(evt);
@@ -179,7 +177,7 @@ public class Menu extends javax.swing.JFrame {
         Mantenimientos.add(mantvendedor);
 
         mantproductos.setText("De Productos");
-        mantproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mantproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mantproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mantproductosActionPerformed(evt);
@@ -192,7 +190,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.setText("Movimientos");
 
         movfactura.setText("De Factura");
-        movfactura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        movfactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         movfactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 movfacturaActionPerformed(evt);
@@ -201,7 +199,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.add(movfactura);
 
         entradaproductos.setText("Entrada de porductos");
-        entradaproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entradaproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         entradaproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entradaproductosActionPerformed(evt);
@@ -210,7 +208,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.add(entradaproductos);
 
         salidaproductos.setText("Salida de productos");
-        salidaproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salidaproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salidaproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salidaproductosActionPerformed(evt);
@@ -219,7 +217,7 @@ public class Menu extends javax.swing.JFrame {
         Movimientos.add(salidaproductos);
 
         movcobrofact.setText("Cobro Factura");
-        movcobrofact.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        movcobrofact.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         movcobrofact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 movcobrofactActionPerformed(evt);
@@ -237,7 +235,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         consulclient.setText("De Clientes");
-        consulclient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consulclient.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         consulclient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consulclientActionPerformed(evt);
@@ -246,7 +244,7 @@ public class Menu extends javax.swing.JFrame {
         Consultas.add(consulclient);
 
         consultvend.setText("De Vendedores");
-        consultvend.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultvend.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         consultvend.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultvendActionPerformed(evt);
@@ -255,7 +253,7 @@ public class Menu extends javax.swing.JFrame {
         Consultas.add(consultvend);
 
         ConsultaDeProductos.setText("De Productos");
-        ConsultaDeProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ConsultaDeProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         ConsultaDeProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ConsultaDeProductosActionPerformed(evt);
@@ -264,17 +262,13 @@ public class Menu extends javax.swing.JFrame {
         Consultas.add(ConsultaDeProductos);
 
         consulfact.setText("De Facturas");
-        consulfact.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consulfact.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         consulfact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consulfactActionPerformed(evt);
             }
         });
         Consultas.add(consulfact);
-
-        jMenuItem5.setText("De Cobros de Factura");
-        jMenuItem5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Consultas.add(jMenuItem5);
 
         jMenuBar1.add(Consultas);
 
@@ -485,7 +479,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
